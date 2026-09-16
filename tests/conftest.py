@@ -11,6 +11,18 @@ import textwrap
 from pathlib import Path
 
 import pytest
+from hypothesis import HealthCheck, settings
+
+# Coverage instrumentation makes every call slow enough to trip the default
+# 200 ms Hypothesis deadline, which turned a pure-function property test into a
+# flake that only appeared under --cov. Timing is not what these properties
+# assert, so the deadline is removed rather than tuned.
+settings.register_profile(
+    "mhvsr",
+    deadline=None,
+    suppress_health_check=[HealthCheck.too_slow],
+)
+settings.load_profile("mhvsr")
 
 REAL_USGS_CONFIG = Path("configs/datasets/usgs_arra.yaml")
 REAL_USGS_ROOT = Path("datasets_global/source_05_usgs_arra_2013/raw/extracted")

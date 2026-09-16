@@ -1,0 +1,12 @@
+{
+  "curve_index": "artifacts\\curve_indexes\\usgs_arra_2013__published_compat_v1.parquet",
+  "extrapolated_count": 2,
+  "failure_reasons": {},
+  "model_ready_count": 18,
+  "profile_id": "published_compat_v1",
+  "recording_count": 18,
+  "source_id": "usgs_arra_2013",
+  "status_counts": {
+    "flagged": 18
+  }
+}

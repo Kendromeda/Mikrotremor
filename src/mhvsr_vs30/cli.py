@@ -27,6 +27,9 @@ from mhvsr_vs30.manifest.builder import build_manifest
 from mhvsr_vs30.manifest.schemas import Manifest, load_source_config
 from mhvsr_vs30.manifest.store import read_manifest, write_manifest
 from mhvsr_vs30.manifest.validation import validate_manifest
+from mhvsr_vs30.preprocessing.batch import run_profile, write_report
+from mhvsr_vs30.preprocessing.compare import compare_profiles
+from mhvsr_vs30.preprocessing.config import load_profile
 
 __all__ = ["main"]
 
@@ -131,6 +134,39 @@ def _cmd_recording_validate_all(args: argparse.Namespace) -> int:
     return 0 if not failed else 1
 
 
+def _cmd_preprocess_run(args: argparse.Namespace) -> int:
+    manifest = read_manifest(args.manifest)
+    source = load_source_config(args.config)
+    profile = load_profile(args.profile)
+
+    snapshot_path = Path(args.manifest) / "snapshot.json"
+    snapshot_hash = None
+    if snapshot_path.is_file():
+        snapshot_hash = json.loads(snapshot_path.read_text(encoding="utf-8")).get("config_hash")
+
+    summary = run_profile(
+        manifest,
+        source,
+        profile,
+        args.workspace,
+        curves_root=args.curves,
+        index_root=args.indexes,
+        snapshot_hash=snapshot_hash,
+    )
+    if args.report is not None:
+        write_report(summary, args.report)
+    _emit(summary)
+    return 0 if not summary["failure_reasons"] else 1
+
+
+def _cmd_preprocess_compare(args: argparse.Namespace) -> int:
+    report = compare_profiles(args.source_id, args.left, args.right, args.indexes, args.curves)
+    if args.report is not None:
+        write_report(report, args.report)
+    _emit(report)
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="mhvsr-vs30", description=__doc__)
     parser.add_argument("--version", action="version", version=__version__)
@@ -169,6 +205,28 @@ def build_parser() -> argparse.ArgumentParser:
     validate_all.add_argument("--workspace", default=Path("."), type=Path)
     validate_all.add_argument("--report", default=None, type=Path)
     validate_all.set_defaults(handler=_cmd_recording_validate_all)
+
+    preprocess = subcommands.add_parser("preprocess", help="turn recordings into mHVSR curves")
+    preprocess_actions = preprocess.add_subparsers(dest="action", required=True)
+
+    run = preprocess_actions.add_parser("run", help="process every recording under a profile")
+    run.add_argument("--manifest", required=True, type=Path)
+    run.add_argument("--config", required=True, type=Path)
+    run.add_argument("--profile", required=True, type=Path)
+    run.add_argument("--workspace", default=Path("."), type=Path)
+    run.add_argument("--curves", default=Path("artifacts/curves"), type=Path)
+    run.add_argument("--indexes", default=Path("artifacts/curve_indexes"), type=Path)
+    run.add_argument("--report", default=None, type=Path)
+    run.set_defaults(handler=_cmd_preprocess_run)
+
+    compare = preprocess_actions.add_parser("compare", help="compare two profiles")
+    compare.add_argument("--source-id", required=True, dest="source_id")
+    compare.add_argument("--left", required=True)
+    compare.add_argument("--right", required=True)
+    compare.add_argument("--curves", default=Path("artifacts/curves"), type=Path)
+    compare.add_argument("--indexes", default=Path("artifacts/curve_indexes"), type=Path)
+    compare.add_argument("--report", default=None, type=Path)
+    compare.set_defaults(handler=_cmd_preprocess_compare)
 
     return parser
 

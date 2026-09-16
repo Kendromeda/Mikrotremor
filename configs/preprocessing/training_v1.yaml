@@ -1,0 +1,56 @@
+# Produce a new scientific dataset. This profile is allowed to disagree with the
+# notebooks, and does so deliberately in four places:
+#
+#   1. Window length is constant across the corpus, so the usable frequency
+#      floor is a property of the configuration rather than of how long each
+#      operator happened to record.
+#   2. Window rejection is automatic and deterministic, so a batch run is
+#      reproducible and auditable.
+#   3. No extrapolation. A record that cannot support the model grid is stored
+#      with model_ready=false rather than filled with invented values.
+#   4. Frequency validity follows significant cycles and the Nyquist margin.
+#
+# Window length 60 s with 15 significant cycles gives a floor of 15/60 = 0.25 Hz,
+# which clears the 0.3 Hz model grid minimum without extrapolating.
+
+profile_id: training_v1
+purpose: >-
+  Deterministic, auditable curves intended as new training data.
+hvsrpy_version: "2.0.0"
+
+windowing:
+  mode: fixed_duration
+  window_length_s: 60
+  detrend: linear
+  taper: tukey
+  taper_width: 0.2
+  significant_cycles: 15
+  minimum_windows: 15
+
+smoothing:
+  operator: konno_and_ohmachi
+  bandwidth: 40
+  internal_grid_min_hz: 0.05
+  internal_grid_max_hz: 50
+  internal_grid_points: 256
+
+rejection:
+  method: frequency_domain
+  # n_sigma is provisional. It is chosen by the sensitivity sweep over
+  # [2.0, 2.5, 3.0] on curve stability, not by anything measured on Indonesia.
+  n_sigma: 2.0
+  maximum_iterations: 50
+  minimum_accepted_windows: 15
+  minimum_accepted_fraction: 0.5
+
+model_grid:
+  # Provisional ceiling. Wellington records at 100 Hz, which puts 50 Hz exactly
+  # at Nyquist, so 0.3-40 Hz for the whole corpus is the alternative under
+  # comparison before this profile is frozen.
+  min_hz: 0.3
+  max_hz: 50
+  points: 35
+  allow_extrapolation: false
+
+method_to_combine_horizontals: geometric_mean
+distribution: lognormal

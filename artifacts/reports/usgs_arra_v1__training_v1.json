@@ -1,0 +1,16 @@
+{
+  "curve_index": "artifacts\\curve_indexes\\usgs_arra_2013__training_v1.parquet",
+  "extrapolated_count": 0,
+  "failure_reasons": {
+    "insufficient_accepted_windows": 1
+  },
+  "model_ready_count": 17,
+  "profile_id": "training_v1",
+  "recording_count": 18,
+  "source_id": "usgs_arra_2013",
+  "status_counts": {
+    "failed": 1,
+    "flagged": 16,
+    "passed": 1
+  }
+}

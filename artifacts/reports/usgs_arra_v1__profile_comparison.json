@@ -1,0 +1,35 @@
+{
+  "comparable_recordings": 17,
+  "left": {
+    "extrapolated": 2,
+    "mean_accepted_windows": 35.0,
+    "model_ready": 18,
+    "profile_id": "published_compat_v1",
+    "recordings": 18,
+    "status_counts": {
+      "flagged": 18
+    }
+  },
+  "max_abs_log_ratio": {
+    "max": 0.3103763888881947,
+    "median": 0.09227371893890024,
+    "note": "Largest absolute natural-log difference between the two model feature vectors, per recording. A value near 0 means the profiles agree; large values mean the legacy choices dominate the curve."
+  },
+  "only_model_ready_in_left": [
+    "0e1f5de2b2c72307dd785d0892361dd81a259351ce07e46904b0808dcd2a1ff1"
+  ],
+  "only_model_ready_in_right": [],
+  "right": {
+    "extrapolated": 0,
+    "mean_accepted_windows": 40.705882352941174,
+    "model_ready": 17,
+    "profile_id": "training_v1",
+    "recordings": 18,
+    "status_counts": {
+      "failed": 1,
+      "flagged": 16,
+      "passed": 1
+    }
+  },
+  "source_id": "usgs_arra_2013"
+}

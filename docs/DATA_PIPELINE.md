@@ -93,6 +93,51 @@ surface-wave surveys, yet nothing can read one with the other reader. Values:
 `ascii_3c`, `miniseed`, `sac`, `gcf`, `seg2`, `hp_sdf`. An asset that no rule
 claims carries no hint at all, because the extension is not evidence.
 
+## Preprocessing profiles
+
+Raw components become an mHVSR curve under one of two profiles, because two
+different questions are being asked and one configuration cannot answer both.
+
+| | `published_compat_v1` | `training_v1` |
+|---|---|---|
+| Purpose | compare against the published models | produce new training data |
+| Window length | duration / 35, so it varies per record | fixed 60 s |
+| Window rejection | none (the notebook rejects by hand) | deterministic frequency-domain |
+| Model grid | 0.3-50 Hz, 35 points | same |
+| Extrapolation | allowed, reproducing legacy behaviour, always flagged | forbidden |
+
+Every value in `published_compat_v1` was read out of the reference notebooks,
+including `significant_cycles = 15`, Tukey 0.2, Konno-Ohmachi bandwidth 40, the
+0.05-50 Hz / 256 point internal grid, and the `fill_value="extrapolate"` call
+that fills the model grid below the usable frequency floor. Curves from that
+profile carry `extrapolated=true` and are not automatically eligible as training
+data.
+
+The spectral core (detrend, taper, FFT, Konno-Ohmachi, horizontal combination)
+is delegated to hvsrpy 2.0.0 rather than reimplemented. Reimplementing it would
+guarantee the compatibility profile stopped matching the library that produced
+the published models, and would make the two profiles incomparable to each
+other. What this project owns is the policy around that core: window length,
+which frequencies are admissible, which windows survive, and what is written
+down.
+
+```bash
+uv run mhvsr-vs30 preprocess run --manifest artifacts/manifests/usgs_arra_v1 --config configs/datasets/usgs_arra.yaml --profile configs/preprocessing/training_v1.yaml --report artifacts/reports/usgs_arra_v1__training_v1.json
+```
+
+```bash
+uv run mhvsr-vs30 preprocess compare --source-id usgs_arra_2013 --left published_compat_v1 --right training_v1
+```
+
+Each recording produces `curve.npz`, `qc.json` and `provenance.json` under
+`artifacts/curves/<profile>/<recording_id>/`, written atomically through a
+staging directory. Arrays load with `allow_pickle=False`. A run also writes
+`artifacts/curve_indexes/<source>__<profile>.parquet` for corpus-level analysis.
+
+A `preprocess run` exits non-zero when any recording failed to produce a curve.
+That is intentional: a failed recording is recorded in the index with its
+reason, and an operator should have to notice.
+
 ## Adding a source
 
 Write a YAML file in `configs/datasets/`. It records only claims you verified in

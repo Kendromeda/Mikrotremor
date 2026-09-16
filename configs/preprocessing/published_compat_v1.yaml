@@ -1,0 +1,51 @@
+# Reproduce the reference notebooks byte-for-byte in intent, so curves from this
+# pipeline can be compared against the published pretrained models.
+#
+# Every value below was read out of high_dim_models.ipynb / low_dim_models.ipynb,
+# not chosen here. Do not "improve" anything in this file: its only job is to
+# match what produced the published models.
+#
+# Known legacy behaviour, reproduced on purpose and flagged in the output:
+#   - window length varies per recording (duration / 35)
+#   - the model grid is filled by linear interpolation with
+#     fill_value="extrapolate", so values below the usable frequency floor are
+#     invented. Curves from this profile carry extrapolated=true and are NOT
+#     automatically eligible as new training data.
+
+profile_id: published_compat_v1
+purpose: >-
+  Compatibility with the reference notebooks and the published pretrained
+  models. Comparison only; not a source of new training labels.
+hvsrpy_version: "2.0.0"
+
+windowing:
+  mode: fixed_count
+  window_count: 35          # notebook: time_windows = 35
+  detrend: linear
+  taper: tukey
+  taper_width: 0.2          # notebook: ("tukey", 0.2)
+  significant_cycles: 15    # notebook: significant_cycles = 15
+  minimum_windows: 35
+
+smoothing:
+  operator: konno_and_ohmachi
+  bandwidth: 40
+  internal_grid_min_hz: 0.05   # notebook: np.geomspace(0.05, 50, 256)
+  internal_grid_max_hz: 50
+  internal_grid_points: 256
+
+rejection:
+  # The notebook uses manual_window_rejection, which cannot run unattended and
+  # is not reproducible. Batch runs therefore reject nothing here, and the
+  # difference from the notebook is a known, stated limitation of this profile.
+  method: none
+  minimum_accepted_windows: 1
+
+model_grid:
+  min_hz: 0.3               # notebook: np.logspace(log10(0.3), log10(50), 35)
+  max_hz: 50
+  points: 35
+  allow_extrapolation: true
+
+method_to_combine_horizontals: geometric_mean
+distribution: lognormal
