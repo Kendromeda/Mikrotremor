@@ -22,4 +22,4 @@ be0d8fd2e65288b1f40561a4440dde7ed4e40caef10d4b58b71bb1fa60e90e4f *./raw/2018-Jak
 86558ee081e86da872fa4fccfe3dcfaac2921aac74df482f072dd7cb303dd59f *./raw/2018-Jakarta-Network/README.md
 932c207a37ec8ac7b7ad3d7b77143889d85a74a05566d8a910d344f8808db472 *./raw/Vs-Jakarta-Basin/README.md
 27df4fd6a4e98f42737baf25d1842f56438cfff85feaa3407885dd7b4f30d56f *./raw/Vs-Jakarta-Basin/VS_JakartaBasin.xlsx
-c03a6ba7d9cc79fc280baf848ebf2230b1031dcec8ee4fd1c90f19e1fda86722 *./related_open_access/Cipta2018_GJI_Jakarta_HVSR_ANU.pdf
+c03a6ba7d9cc79fc280baf848ebf2230b1031dcec8ee4fd1c90f19e1fda86722 *./raw/related_open_access/Cipta2018_GJI_Jakarta_HVSR_ANU.pdf

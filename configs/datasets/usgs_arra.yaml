@@ -28,24 +28,20 @@ recording:
   # source document confirms it. Set start_time_from_filename here to enable it.
   start_time_from_filename: null
 
-  # CCC_HVSR/20110616181108.Q289.txt ends mid-sample: its last line (435214)
-  # holds only the vertical value, so acquisition was cut between columns.
-  # Discarding that one partial sample drops 1 of 435214 samples (0.0002% of
-  # that record) and leaves the other 17 recordings untouched. Set this to
-  # false to have the build refuse the file instead.
-  drop_incomplete_final_row: true
-
 asset_rules:
   - pattern: "*_HVSR/*.txt"
     media_type: ambient_noise_waveform
+    format_hint: ascii_3c
     note: Three-column ASCII ambient noise, per FILE FORMATS.docx
   # CI.CLC names its folder CLC_MASWSR (MASW plus seismic refraction), so the
   # pattern matches the family rather than one spelling.
   - pattern: "*_MASW*/*.dat"
     media_type: surface_wave_survey
+    format_hint: seg2
     note: SEG-2 MASW/refraction; a c or m suffix marks edited headers
   - pattern: "*_SASW/*.DAT"
     media_type: surface_wave_survey
+    format_hint: hp_sdf
     note: HP SDF SASW, not SEG-2, despite sharing the .dat extension
   - pattern: "*_Forms.pdf"
     media_type: field_note
@@ -56,6 +52,20 @@ asset_rules:
     media_type: site_metadata
   - pattern: "*/FILE FORMATS.docx"
     media_type: site_metadata
+
+# Repairs are granted per file and pinned to its exact bytes. If the checksum
+# stops matching, the build refuses rather than reusing an audit written about
+# different data.
+repairs:
+  - relative_path: "CI.CCC/CI.CCC/CI_CCC_Raw_Data/CCC_HVSR/20110616181108.Q289.txt"
+    sha256: "575f9bd09772bd41e72fab3611ac6a147e579779dd909328605817fc8396bb88"
+    action: drop_incomplete_final_row
+    expected_samples_dropped: 1
+    reason: >-
+      Acquisition was cut mid-sample. Line 435214 holds only the vertical value
+      and no north/east columns, so the final sample is incomplete rather than
+      corrupt. Discarding it drops 1 of 435214 samples (0.0002 percent of this
+      record); the other 17 recordings are untouched.
 
 vs30_range_mps: [50, 3000]
 

@@ -2,12 +2,26 @@
 
 from __future__ import annotations
 
+import hashlib
 from pathlib import Path
 from typing import Any
 
-from mhvsr_vs30.contracts import MediaType, RawAsset, Recording
+from mhvsr_vs30.contracts import MediaType, RawAsset, Recording, RepairAction
 from mhvsr_vs30.hashing import make_asset_id, make_recording_id, make_site_id, sha256_file
 from mhvsr_vs30.io.base import ReadRequest
+from mhvsr_vs30.manifest.schemas import RepairRule
+
+
+def drop_final_row_repair(path: Path, root: Path | None = None) -> RepairRule:
+    """A repair permission pinned to the bytes of this exact file."""
+    base = root or path.parent
+    return RepairRule(
+        relative_path=path.relative_to(base).as_posix(),
+        sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
+        action=RepairAction.DROP_INCOMPLETE_FINAL_ROW,
+        reason="synthetic fixture cut mid-sample",
+    )
+
 
 SOURCE_ID = "test_source"
 SITE_CODE = "XX.AAA"

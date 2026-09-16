@@ -13,7 +13,7 @@ from fnmatch import fnmatchcase
 from pathlib import Path
 from typing import Any
 
-from mhvsr_vs30.contracts import MediaType, RawAsset, Recording, Site, Vs30Label
+from mhvsr_vs30.contracts import FormatHint, MediaType, RawAsset, Recording, Site, Vs30Label
 from mhvsr_vs30.exceptions import ConfigError, ManifestValidationError
 from mhvsr_vs30.hashing import (
     make_asset_id,
@@ -56,12 +56,18 @@ def _matches_any(relative_path: str, patterns: Iterable[str]) -> bool:
     return any(fnmatchcase(relative_path, pattern) for pattern in patterns)
 
 
-def classify_asset(relative_path: str, config: SourceConfig) -> MediaType:
-    """Decide what a file is, preferring the documented rules of the study."""
+def classify_asset(relative_path: str, config: SourceConfig) -> tuple[MediaType, FormatHint | None]:
+    """Decide what a file is and how it is encoded.
+
+    Meaning and wire format are answered together but kept separate: the study
+    rules supply both, while the extension fallback can only guess at meaning
+    and never asserts a format.
+    """
     for rule in config.asset_rules:
         if fnmatchcase(relative_path, rule.pattern):
-            return rule.media_type
-    return _EXTENSION_DEFAULTS.get(Path(relative_path).suffix.lower(), MediaType.UNKNOWN)
+            return rule.media_type, rule.format_hint
+    fallback = _EXTENSION_DEFAULTS.get(Path(relative_path).suffix.lower(), MediaType.UNKNOWN)
+    return fallback, None
 
 
 def _load_cache(cache_path: Path | None) -> dict[str, dict[str, Any]]:
@@ -131,14 +137,16 @@ def discover_assets(
             "mtime_ns": stat.st_mtime_ns,
             "sha256": checksum,
         }
+        media_type, format_hint = classify_asset(relative_path, config)
         assets.append(
             RawAsset(
                 asset_id=make_asset_id(config.source_id, relative_path),
                 source_id=config.source_id,
                 relative_path=relative_path,
-                media_type=classify_asset(relative_path, config),
+                media_type=media_type,
                 byte_size=stat.st_size,
                 sha256=checksum,
+                format_hint=format_hint,
             )
         )
 

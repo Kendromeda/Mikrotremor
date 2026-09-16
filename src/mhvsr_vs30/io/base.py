@@ -26,6 +26,7 @@ __all__ = [
     "HvsrCurve",
     "ReadRequest",
     "RecordingReader",
+    "RepairRecord",
     "SurveyInspection",
     "ThreeComponentRecord",
 ]
@@ -45,6 +46,22 @@ def _freeze(values: Any, name: str) -> np.ndarray:
 
 
 @dataclasses.dataclass(frozen=True)
+class RepairRecord:
+    """One repair that was actually applied, and what it cost.
+
+    Carried on the record rather than logged, so a curve built from repaired
+    input can never be mistaken downstream for a clean one.
+    """
+
+    action: str
+    reason: str
+    samples_dropped: int = 0
+
+    def as_dict(self) -> dict[str, Any]:
+        return dataclasses.asdict(self)
+
+
+@dataclasses.dataclass(frozen=True)
 class ThreeComponentRecord:
     """Three equal-length components on one clock, in source units.
 
@@ -60,6 +77,7 @@ class ThreeComponentRecord:
     units: str
     source_channels: Mapping[str, str]
     recording_id: str
+    repairs: tuple[RepairRecord, ...] = ()
 
     def __post_init__(self) -> None:
         for name in ("z", "north", "east"):
@@ -95,7 +113,9 @@ class ThreeComponentRecord:
             "source_channels": dict(self.source_channels),
             "units": self.units,
             "start_time": self.start_time.isoformat() if self.start_time else None,
-            "structural_qc": "passed",
+            "structural_qc": "passed_with_repair" if self.repairs else "passed",
+            "repair_actions": [repair.as_dict() for repair in self.repairs],
+            "samples_dropped_by_repair": sum(r.samples_dropped for r in self.repairs),
         }
 
 
@@ -180,7 +200,9 @@ class ReadRequest:
     declared_sampling_rate_hz: float | None = None
     units: str | None = None
     component_order: Sequence[str] = ("vertical", "north", "east")
-    drop_incomplete_final_row: bool = False
+    # Permission to repair this exact file, already checked against its checksum
+    # by the resolver. None means the reader must refuse defective input.
+    repair: Any | None = None
 
 
 @runtime_checkable

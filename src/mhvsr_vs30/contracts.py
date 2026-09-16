@@ -21,11 +21,14 @@ from typing import Annotated, Any, Self
 from pydantic import AfterValidator, BaseModel, BeforeValidator, ConfigDict, Field, PlainSerializer
 
 __all__ = [
+    "FormatHint",
     "LabelIndependence",
     "ManifestRecord",
     "MediaType",
     "RawAsset",
     "Recording",
+    "RelativePath",
+    "RepairAction",
     "Site",
     "Source",
     "Vs30Label",
@@ -57,6 +60,32 @@ class MediaType(StrEnum):
     IMAGE = "image"
     ARCHIVE = "archive"
     UNKNOWN = "unknown"
+
+
+class FormatHint(StrEnum):
+    """The wire format of a raw file, as identified by the release itself.
+
+    Separate from :class:`MediaType`, which says what a file *means*. A SEG-2
+    MASW gather and an HP SDF SASW sweep are both surface-wave surveys, but
+    nothing can read one with the other reader.
+    """
+
+    ASCII_3C = "ascii_3c"
+    MINISEED = "miniseed"
+    SAC = "sac"
+    GCF = "gcf"
+    SEG2 = "seg2"
+    HP_SDF = "hp_sdf"
+
+
+class RepairAction(StrEnum):
+    """A defect in published data that this pipeline is allowed to work around.
+
+    The vocabulary is closed on purpose: every entry is a documented decision
+    about real bytes, not a general-purpose cleaning step.
+    """
+
+    DROP_INCOMPLETE_FINAL_ROW = "drop_incomplete_final_row"
 
 
 class LabelIndependence(StrEnum):
@@ -200,6 +229,7 @@ class RawAsset(ManifestRecord):
     media_type: MediaType
     byte_size: int = Field(ge=0)
     sha256: Sha256Hex
+    format_hint: FormatHint | None = None
 
 
 class Recording(ManifestRecord):

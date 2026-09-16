@@ -15,7 +15,7 @@ from mhvsr_vs30.exceptions import (
 )
 from mhvsr_vs30.io.base import ThreeComponentRecord
 from mhvsr_vs30.io.registry import available_formats, get_reader
-from tests.reader_helpers import make_request
+from tests.reader_helpers import drop_final_row_repair, make_request
 
 
 def write_lines(path: Path, lines: list[str]) -> Path:
@@ -141,12 +141,12 @@ def test_truncated_final_row_is_reported_as_ragged_not_as_nan(tmp_path: Path) ->
 
     message = str(excinfo.value)
     assert "line 3 has 1 columns" in message
-    assert "drop_incomplete_final_row" in message
+    assert "repairs entry" in message
 
 
 def test_truncated_final_row_is_dropped_only_when_configured(tmp_path: Path) -> None:
     path = write_lines(tmp_path / "cut.txt", ["1\t2\t3", "4\t5\t6", "706"])
-    record = read_usgs(path, drop_incomplete_final_row=True)
+    record = read_usgs(path, repair=drop_final_row_repair(path))
 
     assert record.n_samples == 2
     assert np.array_equal(record.z, [1.0, 4.0])
@@ -156,7 +156,7 @@ def test_the_drop_option_does_not_hide_a_ragged_row_in_the_middle(tmp_path: Path
     path = write_lines(tmp_path / "middle.txt", ["1\t2\t3", "706", "4\t5\t6"])
 
     with pytest.raises(MalformedAsciiError) as excinfo:
-        read_usgs(path, drop_incomplete_final_row=True)
+        read_usgs(path, repair=drop_final_row_repair(path))
     assert "line 2" in str(excinfo.value)
 
 
@@ -164,4 +164,4 @@ def test_the_drop_option_does_not_hide_a_genuine_nan(tmp_path: Path) -> None:
     path = write_lines(tmp_path / "nan.txt", ["1\t2\t3", "nan\t5\t6"])
 
     with pytest.raises(NonFiniteSampleError):
-        read_usgs(path, drop_incomplete_final_row=True)
+        read_usgs(path, repair=drop_final_row_repair(path))

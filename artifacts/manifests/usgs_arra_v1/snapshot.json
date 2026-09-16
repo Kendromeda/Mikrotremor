@@ -1,14 +1,19 @@
 {
   "asset_count": 189,
-  "code_commit": "ea8b951021e0f987268dce6bfe1072fd64fd93c2",
-  "config_hash": "429ec882c1f0aa3e5f7422ae5a7c12450d1198ab2ea5c01cf9a3fd2a47e9262b",
+  "code_commit": "fb837d2926735960fbf9ccc09a5577fce5b8ad99",
+  "code_dirty": true,
+  "config_hash": "6f4e7338ccaf74f2aee80ac8d7c1cca7b1ac8bd078dde2f543b054f4ae4010d4",
   "config_path": "configs/datasets/usgs_arra.yaml",
-  "created_at": "2026-09-16T07:39:39.917566+00:00",
+  "created_at": "2026-09-16T08:43:34.548661+00:00",
   "label_count": 3,
+  "lockfile_hash": "f6d579ae5bc30993363b3968396ae0e0408cd0532a5af7c5c175416db9e7e23b",
   "manifest_version": "1.0",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python_version": "3.12.13",
   "recording_count": 18,
   "site_count": 3,
   "source_count": 1,
   "source_id": "usgs_arra_2013",
+  "source_tree_hash": "06388a6ba36a32b5c2363e44402a7f7f4dcd39b06f5f2f039e172e50d8a40f97",
   "tool_version": "0.2.0"
 }

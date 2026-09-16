@@ -17,10 +17,13 @@ import yaml
 from pydantic import BaseModel, ConfigDict, Field, ValidationError, field_validator
 
 from mhvsr_vs30.contracts import (
+    FormatHint,
     LabelIndependence,
     MediaType,
     RawAsset,
     Recording,
+    RelativePath,
+    RepairAction,
     Site,
     Source,
     Vs30Label,
@@ -34,13 +37,15 @@ __all__ = [
     "LabelConfig",
     "Manifest",
     "RecordingConfig",
+    "RepairAction",
+    "RepairRule",
     "SiteConfig",
     "SourceConfig",
     "load_source_config",
 ]
 
 TABLE_NAMES = ("sources", "sites", "assets", "recordings", "labels")
-CSV_TABLE_NAMES = ("sources", "sites", "recordings", "labels")
+CSV_TABLE_NAMES = ("sources", "sites", "assets", "recordings", "labels")
 MANIFEST_VERSION = "1.0"
 
 _COMPONENT_NAMES = ("vertical", "north", "east")
@@ -101,11 +106,6 @@ class RecordingConfig(_Config):
     # How components that live in separate files are grouped into one recording.
     bundle_group_by: str | None = None
 
-    # Some ASCII recordings end mid-sample because acquisition was cut. Dropping
-    # that partial row is a judgement call about the data, so it stays off until
-    # a source config says otherwise.
-    drop_incomplete_final_row: bool = False
-
     @field_validator("bundle_group_by")
     @classmethod
     def _known_bundle_rule(cls, value: str | None) -> str | None:
@@ -138,7 +138,24 @@ class AssetRule(_Config):
 
     pattern: str = Field(min_length=1)
     media_type: MediaType
+    format_hint: FormatHint | None = None
     note: str | None = None
+
+
+class RepairRule(_Config):
+    """Permission to repair exactly one file, pinned to its exact bytes.
+
+    A repair is an admission that the published data is defective, so it is
+    granted per file and per checksum rather than as a per-source switch. If the
+    file is ever replaced, the checksum stops matching and the pipeline refuses
+    to reuse an audit that was written about different bytes.
+    """
+
+    relative_path: RelativePath
+    sha256: str = Field(pattern=r"^[0-9a-f]{64}$")
+    action: RepairAction
+    reason: str = Field(min_length=1)
+    expected_samples_dropped: int | None = Field(default=None, ge=0)
 
 
 class Expectations(_Config):
@@ -160,6 +177,7 @@ class SourceConfig(_Config):
     source_url: str | None = None
     recording: RecordingConfig
     asset_rules: tuple[AssetRule, ...] = ()
+    repairs: tuple[RepairRule, ...] = ()
     exclude: tuple[str, ...] = ()
     vs30_range_mps: tuple[float, float] = (50.0, 3000.0)
     expectations: Expectations = Expectations()

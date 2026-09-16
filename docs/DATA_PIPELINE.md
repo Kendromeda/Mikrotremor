@@ -62,6 +62,37 @@ A published H/V curve becomes an `HvsrCurve` marked `input_level=processed_curve
 and is never mixed with raw waveforms. A SEG-2 file becomes a `SurveyInspection`
 unless the configuration states which trace is Z, N and E.
 
+## Repairing defective source data
+
+Published data is sometimes broken. USGS ARRA has one recording whose
+acquisition was cut mid-sample, leaving a final line with one column instead of
+three. Working around that is a judgement call about real bytes, so permission
+is granted per file and pinned to its checksum:
+
+```yaml
+repairs:
+  - relative_path: "CI.CCC/.../20110616181108.Q289.txt"
+    sha256: "575f9bd09772..."
+    action: drop_incomplete_final_row
+    expected_samples_dropped: 1
+    reason: >-
+      Acquisition was cut mid-sample. Line 435214 holds only the vertical value.
+```
+
+If that file is ever re-downloaded or re-extracted, the checksum stops matching
+and the build refuses rather than reusing an audit written about different data.
+A record built from repaired input reports `structural_qc: passed_with_repair`
+and carries the action, the reason and the number of samples discarded, so no
+downstream stage can mistake it for clean input.
+
+## Asset format hints
+
+`media_type` says what a file means; `format_hint` says how it is encoded. They
+are separate because a SEG-2 MASW gather and an HP SDF SASW sweep are both
+surface-wave surveys, yet nothing can read one with the other reader. Values:
+`ascii_3c`, `miniseed`, `sac`, `gcf`, `seg2`, `hp_sdf`. An asset that no rule
+claims carries no hint at all, because the extension is not evidence.
+
 ## Adding a source
 
 Write a YAML file in `configs/datasets/`. It records only claims you verified in

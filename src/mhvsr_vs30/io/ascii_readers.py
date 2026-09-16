@@ -7,12 +7,18 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from mhvsr_vs30.contracts import RepairAction
 from mhvsr_vs30.exceptions import (
     MalformedAsciiError,
     MetadataConflictError,
     NonFiniteSampleError,
 )
-from mhvsr_vs30.io.base import HvsrCurve, ReadRequest, ThreeComponentRecord
+from mhvsr_vs30.io.base import (
+    HvsrCurve,
+    ReadRequest,
+    RepairRecord,
+    ThreeComponentRecord,
+)
 
 __all__ = ["ProcessedHvsrReader", "UsgsAsciiReader"]
 
@@ -57,8 +63,9 @@ class UsgsAsciiReader:
             raise MalformedAsciiError(f"{request.asset.relative_path}: file holds no samples")
 
         values = frame.to_numpy(dtype=np.float64, copy=False)
+        repairs: tuple[RepairRecord, ...] = ()
         if not np.isfinite(values).all():
-            values = self._resolve_non_finite(values, request)
+            values, repairs = self._resolve_non_finite(values, request)
 
         column_of = {name: position for position, name in enumerate(order)}
         return ThreeComponentRecord(
@@ -72,10 +79,13 @@ class UsgsAsciiReader:
                 _COMPONENT_BY_NAME[name]: f"column_{column_of[name] + 1}" for name in order
             },
             recording_id=request.recording.recording_id,
+            repairs=repairs,
         )
 
     @staticmethod
-    def _resolve_non_finite(values: np.ndarray, request: ReadRequest) -> np.ndarray:
+    def _resolve_non_finite(
+        values: np.ndarray, request: ReadRequest
+    ) -> tuple[np.ndarray, tuple[RepairRecord, ...]]:
         """Separate a truncated row from a genuinely non-finite sample.
 
         Pandas pads a short row with NaN, so a file cut mid-sample looks exactly
@@ -90,17 +100,26 @@ class UsgsAsciiReader:
 
         line_number, found = ragged[0]
         truncated_tail = len(ragged) == 1 and line_number == len(values)
-        if truncated_tail and request.drop_incomplete_final_row:
+        permitted = (
+            request.repair is not None
+            and getattr(request.repair, "action", None) == RepairAction.DROP_INCOMPLETE_FINAL_ROW
+        )
+        if truncated_tail and permitted:
             trimmed = values[:-1]
             if not np.isfinite(trimmed).all():
                 raise NonFiniteSampleError(
                     f"{request.asset.relative_path}: samples contain NaN or infinity"
                 )
-            return trimmed
+            repair = RepairRecord(
+                action=str(RepairAction.DROP_INCOMPLETE_FINAL_ROW),
+                reason=str(getattr(request.repair, "reason", "")),
+                samples_dropped=1,
+            )
+            return trimmed, (repair,)
 
         detail = (
-            "the recording was cut mid-sample; set drop_incomplete_final_row in the "
-            "source config to discard it"
+            "the recording was cut mid-sample; add a checksum-pinned repairs entry "
+            "to the source config to discard it"
             if truncated_tail
             else f"{len(ragged)} rows have the wrong width"
         )

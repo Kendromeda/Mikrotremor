@@ -8,10 +8,10 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from mhvsr_vs30.contracts import Recording
+from mhvsr_vs30.contracts import RawAsset, Recording
 from mhvsr_vs30.exceptions import ConfigError, RecordingReadError
 from mhvsr_vs30.io.base import ReadRequest
-from mhvsr_vs30.manifest.schemas import Manifest, SourceConfig
+from mhvsr_vs30.manifest.schemas import Manifest, RepairRule, SourceConfig
 
 __all__ = ["resolve_request"]
 
@@ -27,6 +27,26 @@ def _siblings(path: Path, config: SourceConfig, raw_format: str) -> tuple[Path, 
             "must declare bundle_group_by"
         )
     return tuple(sorted(p for p in path.parent.iterdir() if p.is_file()))
+
+
+def _repair_for(asset: RawAsset, config: SourceConfig) -> RepairRule | None:
+    """Find the repair permitted for this exact file, refusing a stale audit.
+
+    Matching on path alone would let a re-downloaded or re-extracted file
+    silently inherit permission that was granted after inspecting different
+    bytes, which is the one thing a repair allowlist exists to prevent.
+    """
+    for rule in config.repairs:
+        if rule.relative_path != asset.relative_path:
+            continue
+        if rule.sha256 != asset.sha256:
+            raise RecordingReadError(
+                f"{asset.relative_path}: a repair is configured for checksum "
+                f"{rule.sha256[:12]} but the file on disk is {asset.sha256[:12]}; "
+                "re-audit the file before reusing this repair"
+            )
+        return rule
+    return None
 
 
 def resolve_request(
@@ -61,5 +81,5 @@ def resolve_request(
         declared_sampling_rate_hz=recording.sampling_rate_hz,
         units=recording.units,
         component_order=config.recording.component_order,
-        drop_incomplete_final_row=config.recording.drop_incomplete_final_row,
+        repair=_repair_for(asset, config),
     )

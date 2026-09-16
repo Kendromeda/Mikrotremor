@@ -9,7 +9,6 @@ from __future__ import annotations
 
 import csv
 import json
-import subprocess
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -17,7 +16,6 @@ from typing import Any
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from mhvsr_vs30 import __version__
 from mhvsr_vs30.contracts import ManifestRecord, RawAsset, Recording, Site, Source, Vs30Label
 from mhvsr_vs30.exceptions import ManifestValidationError
 from mhvsr_vs30.manifest.schemas import (
@@ -27,6 +25,7 @@ from mhvsr_vs30.manifest.schemas import (
     Manifest,
     SourceConfig,
 )
+from mhvsr_vs30.provenance import environment_provenance
 
 __all__ = ["read_manifest", "write_manifest"]
 
@@ -63,6 +62,7 @@ TABLE_SCHEMAS: dict[str, pa.Schema] = {
             ("media_type", _STRING),
             ("byte_size", pa.int64()),
             ("sha256", _STRING),
+            ("format_hint", _STRING),
         ]
     ),
     "recordings": pa.schema(
@@ -132,20 +132,6 @@ def _write_csv(path: Path, schema: pa.Schema, rows: list[dict[str, Any]]) -> Non
             writer.writerow([_csv_value(row[name]) for name in schema.names])
 
 
-def _code_commit() -> str:
-    try:
-        result = subprocess.run(
-            ["git", "rev-parse", "HEAD"],
-            capture_output=True,
-            text=True,
-            check=True,
-            timeout=10,
-        )
-    except (OSError, subprocess.SubprocessError):
-        return "unknown"
-    return result.stdout.strip() or "unknown"
-
-
 def write_manifest(
     manifest: Manifest,
     output_dir: Path | str,
@@ -173,9 +159,8 @@ def write_manifest(
         json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
 
-    snapshot = {
+    snapshot: dict[str, Any] = {
         "manifest_version": MANIFEST_VERSION,
-        "tool_version": __version__,
         "source_id": manifest.source.source_id,
         "config_path": config.config_path,
         "config_hash": config.config_hash,
@@ -185,8 +170,8 @@ def write_manifest(
         "recording_count": len(manifest.recordings),
         "label_count": len(manifest.labels),
         "created_at": (created_at or datetime.now(UTC)).isoformat(),
-        "code_commit": _code_commit(),
     }
+    snapshot.update(environment_provenance())
     (target / "snapshot.json").write_text(
         json.dumps(snapshot, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
