@@ -6,6 +6,7 @@
 
 -   [About _mHVSR-Vs30_](#About-mHVSR-Vs30)
 -   [Getting Started](#Getting-Started)
+-   [Data pipeline](#Data-pipeline)
 
 ## About _mHVSR-Vs30_
 
@@ -57,3 +58,12 @@ last few lines of the text displayed in the console.
   of interest.
 
 3.  Enjoy!
+
+## Data pipeline
+
+Curating new training corpora is handled by the `mhvsr_vs30` package under
+`src/`, which builds validated recording-level manifests from published datasets
+and parses their raw files into a canonical three-component representation
+without modifying the raw data. See [docs/DATA_PIPELINE.md](docs/DATA_PIPELINE.md).
+
+The notebooks above do not depend on this package.

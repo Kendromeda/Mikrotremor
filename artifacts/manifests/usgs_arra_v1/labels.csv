@@ -1,0 +1,4 @@
+label_id,site_id,vs30_mps,vs30_std_mps,label_method,label_independence,reference,reference_locator
+085526264775c969f10fef10aeabbdd7b800fe438964717d31f70c9040a35ffb,usgs_arra_2013:CI.DRE,196.0,,surface_wave_multi_technique,independent_of_hvsr,USGS Open-File Report 2013-1102,Table 3
+3b08f703d218aefe8830c18845d1f14475e5387d340f37594eebc944ffb30fd4,usgs_arra_2013:CI.CLC,1464.0,,surface_wave_multi_technique,independent_of_hvsr,USGS Open-File Report 2013-1102,Table 3
+8480ad3d372e9935436518a72f942c18b67edaf785716fa874ca31ee092d3dc1,usgs_arra_2013:CI.CCC,432.0,,surface_wave_multi_technique,independent_of_hvsr,USGS Open-File Report 2013-1102,Table 3

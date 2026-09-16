@@ -1,0 +1,21 @@
+780eae326ab665e44098875113bcbfe745488a7a3581b32ea0df3210f327b195 *./raw/files/Data Mikrotremor/01
+c85b148fe38d330be8375e56307933d0e83d1d11c1effc6626ea901d1fe5788b *./raw/files/Data Mikrotremor/02
+9dae24fbff425980a117b59502b54abab13d05f5845c93a762ba9f4741e632c5 *./raw/files/Data Mikrotremor/03
+501d8dc3cd55a6482a6d640e60ef2664fbeeff35f41f6ec83a8521cfabd29ca7 *./raw/files/Data Mikrotremor/04
+4ae5726b36ad65b008b822210d00b766362f7744bdabf24f460b316310018796 *./raw/files/Data Mikrotremor/05
+2e1d9a29a2140ed3155a6d4588b541c1488a16416384e5e4f54c441e22d84d37 *./raw/files/Data Mikrotremor/06
+8b546ed4fb12ee647bc313888e00489f54f3469f41ee6fbad854b17d7b851d76 *./raw/files/Data Mikrotremor/07
+af58dd1cfb5e74f054881a773d8ff34678f52eeb953ff50ac150b04c47e60e5b *./raw/files/Data Mikrotremor/08
+fe519a9e8a0d9de0afa249b323cfd5a8cd3c79e14e240fc86e004f049840eb4f *./raw/files/Data Mikrotremor/09
+aa9f6b6432837c42207b7d53bf77e82cfecba938a7cfc87c7eb2b6284e4a7af9 *./raw/files/Data Mikrotremor/10
+733a2ecda1ecabd504f13ad69928a8f3e42d32ffde27ffc4393bec235f49d010 *./raw/files/Data Mikrotremor/11
+f565f6603b08324f4bf2b6e8fc77b02e3ee7d3729f1f2beff706060b1cdf4b10 *./raw/files/Data Mikrotremor/14
+7ea07b0d053322a1ff31ad9d3f95cb1c8664e358d2e3834d553e2d16368a9b77 *./raw/files/Data Mikrotremor/15
+3a87cbcf63fc494898f5ca954bd6ddd100204387e0b478d327c0c2f34a4700ea *./raw/files/Data Mikrotremor/16
+9738a41800975ac557038037c596a526324cdf5ddf93d3fed9627402d15f34e9 *./raw/files/Data Mikrotremor/18
+cbe794d989ca599bc3f38bbf734813ab394d96c192a8d2d8e20965d1b0d8c7ad *./raw/files/Data Mikrotremor/19
+86d6d025bd08b113c7384da8fa6c1acae7697c44f12336bf75382d7759bac51f *./raw/files/Data Mikrotremor/20
+4fc847853ed3b4e52794f369855662d7b53508bb662daca92bd399e26cb736cf *./raw/files/Data Resistivity/1.dat
+96fa3917aa5597fc8e30dd93a068e4f0cd7b7efaf61c300d9768cb00195997db *./raw/files/Data Resistivity/2.dat
+41c3af530e93334f9c15ce0a844cbc169ec3adc79ef6e53e265fbcf6bfda427b *./raw/files/Data Resistivity/3.dat
+2044f67533fb9ef57c82d518ff67d6bf8c1f0047ec420b4bb48e80cc75a58bd0 *./raw/mendeley_metadata.json

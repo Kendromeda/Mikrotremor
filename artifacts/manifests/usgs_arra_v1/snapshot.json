@@ -1,0 +1,14 @@
+{
+  "asset_count": 189,
+  "code_commit": "ea8b951021e0f987268dce6bfe1072fd64fd93c2",
+  "config_hash": "429ec882c1f0aa3e5f7422ae5a7c12450d1198ab2ea5c01cf9a3fd2a47e9262b",
+  "config_path": "configs/datasets/usgs_arra.yaml",
+  "created_at": "2026-09-16T07:39:39.917566+00:00",
+  "label_count": 3,
+  "manifest_version": "1.0",
+  "recording_count": 18,
+  "site_count": 3,
+  "source_count": 1,
+  "source_id": "usgs_arra_2013",
+  "tool_version": "0.2.0"
+}

@@ -1,0 +1,295 @@
+1532cbbf5860b05a2d7009d8827595d6f6802624557d5dd68d8121ab217d7137 *./SKIPPED_report_files.txt
+3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986 *./raw/LICENSE
+37e8d623b7d5b0fac8fd51afb78f2a39992efef8d9b9feaf2aae7c14d653c889 *./raw/README.md
+ad22714ff13d758f3b0b1ee5b09f9c7fc832895a8045c39ca1ec2581f609404a *./raw/data/uT12/20241022_145447299.WIT.3c.tst.0.seg2
+4f2528c010fb028f5d698672b28a4ad04821dba3f3508bbf60d93f50225e2a40 *./raw/data/uT12/20241022_145501000.WIT.3c.cont.0.seg2
+434f1959c243c95ce6a4a34210f6ae14d28d43a82a758e54a33c8217277f42d0 *./raw/data/uT12/20241022_145601000.WIT.3c.cont.0.seg2
+3df1d26ed773dd000ab849b3c48293c349b35c177ffab9a77ac469f720ff6aa9 *./raw/data/uT12/20241022_145701000.WIT.3c.cont.0.seg2
+7aa63d87f0b7b10d8a94d63f15d4c8c43b2fad83816619571da7189bb3abc663 *./raw/data/uT12/20241022_145801000.WIT.3c.cont.0.seg2
+3e61a7c086bafe0bc56ca24115338d4d4282dcdc9f626969eb5ba560c8502890 *./raw/data/uT12/20241022_145901000.WIT.3c.cont.0.seg2
+5498a0acb4739b1169cc51fe6cb15680337de3ef41f8b9b1e1bf4950ffb199de *./raw/data/uT12/20241022_150001000.WIT.3c.cont.0.seg2
+f16512d849db42a1ea122fb4d8056ac362ba14e7eac90541b99c580104330539 *./raw/data/uT12/20241022_150101000.WIT.3c.cont.0.seg2
+8a9dfb81e7ca5c0a1fa34961f989e6ad583d04cc926119a620a86910910d076c *./raw/data/uT12/20241022_150201000.WIT.3c.cont.0.seg2
+ecb62fe0b79ecf3b7b196993206492ceb28a070dada42707867dc5b1d8690afe *./raw/data/uT12/20241022_150301000.WIT.3c.cont.0.seg2
+dec224486d65769fa9cc7358a33ab4b5405ce8bb0ff5e3003244242ac4e077b1 *./raw/data/uT12/20241022_150401000.WIT.3c.cont.0.seg2
+525f97428a45716f673ea91950d6b68b60e2388a25da19b2995ec1b943f4ea5a *./raw/data/uT12/20241022_150501000.WIT.3c.cont.0.seg2
+72bcd30f479bb50f833131848563619426cf8757ae027b65418841ad2cc5f557 *./raw/data/uT12/20241022_150601000.WIT.3c.cont.0.seg2
+a1b8646e8b9e386a1f135c62de3ec6954160288aa1e304d49d4ca18d7f87881c *./raw/data/uT12/20241022_150701000.WIT.3c.cont.0.seg2
+cab601492f119d7dcfe6238b3a956bacfa040c91f2dab6c6195ef309fd91cf0d *./raw/data/uT12/20241022_150801000.WIT.3c.cont.0.seg2
+1781acd73e8360256e51c2cc5ce22069cf083ced88b8f707091a438c5e107fb7 *./raw/data/uT12/20241022_150901000.WIT.3c.cont.0.seg2
+da2ee56e3bca423ac0e390bf10073face6ad9604c50aad30a6f8a29e172d4fcc *./raw/data/uT12/20241022_151001000.WIT.3c.cont.0.seg2
+d260806e3ee4b3445a7428ba5fb39d4c7070e6f026ea6b729bb9b53a04bb9e75 *./raw/data/uT12/20241022_151101000.WIT.3c.cont.0.seg2
+787fc0ce3e050d45262a802da3ef21b07f64ff8a8cd80de0b67a105230ef17f1 *./raw/data/uT12/20241022_151201000.WIT.3c.cont.0.seg2
+01618965064d92e093c3087c68d96b012b49850111686e088e544e6fab826e6a *./raw/data/uT12/20241022_151301000.WIT.3c.cont.0.seg2
+0488c19083fbac58f20c55b9fbebebc1e5fcba7602d4fa01b40353860dbd64c7 *./raw/data/uT12/20241022_151401000.WIT.3c.cont.0.seg2
+f9c7f43e429a0c40d97a669b1ad6eda289266d9a2973d858786c780de61c042e *./raw/data/uT12/20241022_151501000.WIT.3c.cont.0.seg2
+b73b1da793e78244a9b342e916526b7c6dabedbb4b59833a1f4ab6a691ef1d7e *./raw/data/uT12/20241022_151601000.WIT.3c.cont.0.seg2
+2c736ea1a6ae3584dbebb48193e4e3a53118dde91ca0652814c8b38975ee3493 *./raw/data/uT12/20241022_151701000.WIT.3c.cont.0.seg2
+4b4d657506935c67da2780d46348f97228c600eaae801db6b6ae9e852c971b01 *./raw/data/uT12/20241022_151801000.WIT.3c.cont.0.seg2
+40cd9889c7245fcace149280b4a3f9bf5183d0509945065cdd13a56dff68f785 *./raw/data/uT12/20241022_151901000.WIT.3c.cont.0.seg2
+505de9a8bf7fd506b44420b8343ea4e6ae94d79f1634644381abc90a0e4fece1 *./raw/data/uT12/20241022_152001000.WIT.3c.cont.0.seg2
+f03c01d4b5650a193d0e47f020aeb0cb7a7a00d5aa84e3af6a4243c99c2c2f7c *./raw/data/uT12/20241022_152101000.WIT.3c.cont.0.seg2
+bb849cfaa07640fa822f5941541a2c9e743adba1d7503ed7235ff8dd121bd12c *./raw/data/uT12/20241022_152201000.WIT.3c.cont.0.seg2
+5f38341d0d3f5568716a92fb4e4b131b35a6a2b817606e65a10adabf44c2efb4 *./raw/data/uT12/20241022_152301000.WIT.3c.cont.0.seg2
+2220fd0e0286a6e735bb0cf2dedacefecf4f8651edbbb9933c26d5b25e72c0b0 *./raw/data/uT12/20241022_152401000.WIT.3c.cont.0.seg2
+dd939a975c7fb538a9322fc442a94dbfd7776c978c7929fb86ca9ebd08521c95 *./raw/data/uT12/20241022_152501000.WIT.3c.cont.0.seg2
+85396c3d1a8fe997aab3659a38cbe5a1f16c1639d66d7a1ad154b9d7260fe01a *./raw/data/uT12/20241022_152601000.WIT.3c.cont.0.seg2
+b337171d4b1dcef6d91974e1e925f59893faa41f31cbcf8fa47111140f7ee2d3 *./raw/data/uT12/20241022_152701000.WIT.3c.cont.0.seg2
+94d968b22787ff2f9e758cffb2409faca9208e1a637c8baa4c83550c2a567d34 *./raw/data/uT12/20241022_152801000.WIT.3c.cont.0.seg2
+6fd6f1800a352c8b1f7558b9db92bd193fe9d6222a17d606267f79f08cc3201c *./raw/data/uT12/20241022_152901000.WIT.3c.cont.0.seg2
+149445d9dd1b01804f24607456ad0fdc493d28000fb11c952d6f86630e971c64 *./raw/data/uT12/20241022_153001000.WIT.3c.cont.0.seg2
+42296936ce4ddb201398af83bd955f0963156a9eed2fa10e7fa9a6ee0e2d34f9 *./raw/data/uT12/20241022_153101000.WIT.3c.cont.0.seg2
+af27f3dffce934269bea27aae7445e9e452446a048d04ec747002a8d5ae9e6c7 *./raw/data/uT12/20241022_153201000.WIT.3c.cont.0.seg2
+f72b9680a5161b538aeec6db1175d5f4dc6ad1cf019d4dfd4e50ea6318f42da3 *./raw/data/uT12/20241022_153301000.WIT.3c.cont.0.seg2
+e24060610a72c8449cb2aa1fd7907ef0e657b12c7911afa3a4054c57aff72bf4 *./raw/data/uT12/20241022_153401000.WIT.3c.cont.0.seg2
+efe8f7f16758a0d0342e5c8d4a2885e1a72ebe761a1a3954ea5f3e6d9459182b *./raw/data/uT12/20241022_153501000.WIT.3c.cont.0.seg2
+550553dd9aa3d7dfc6042f765a433805ff1042c4054d9448229db321ae5df3fc *./raw/data/uT12/20241022_153601000.WIT.3c.cont.0.seg2
+b138199561c6f8b9d8e98b576fbb1d91a8c83da0aec93d7f4f4b418ad4f6ab47 *./raw/data/uT12/20241022_153701000.WIT.3c.cont.0.seg2
+db5918b653baf4e42ed5889b3aedcd1d20e0ec901bd4fc24b2fa676d9f638ef1 *./raw/data/uT12/20241022_153801000.WIT.3c.cont.0.seg2
+fcc82c85a8a346259a99ccf75e06579db4095af57a8982f26c2f22482b084c98 *./raw/data/uT12/20241022_153901000.WIT.3c.cont.0.seg2
+ecbbf2b1e4c94105a6a7307d6560eef918a89ccb98ee53052fa83691bd862e5e *./raw/data/uT12/20241022_154001000.WIT.3c.cont.0.seg2
+dea34d5ed2684e366dc9d82f3d4dde2ab2fe719d7e8a8ee51bb19a34e706381f *./raw/data/uT12/20241022_154101000.WIT.3c.cont.0.seg2
+e6a2fb1c6f85de7e5407af199abc71eec9b99ad8d2ebadd5d9e0907016f167b7 *./raw/data/uT12/20241022_154201000.WIT.3c.cont.0.seg2
+7c300882cb3d7e9763e8d4d3fc1f1fb1b41b8399d93560ae47febce0cdc3447d *./raw/data/uT12/20241022_154301000.WIT.3c.cont.0.seg2
+2e2ff6e2268ed204cecd40b5d7c07f565578bdb40dbbefba93125c484d32ac68 *./raw/data/uT12/20241022_154401000.WIT.3c.cont.0.seg2
+fb8f3068c1b482866329fafe347ff38f2b61d85531a13f12dd5f61a6e020cba9 *./raw/data/uT12/20241022_154501000.WIT.3c.cont.0.seg2
+f0e8118373f6205ac59800686400b69c15270aaeb257eba92663dd4f62ab8c1b *./raw/data/uT12/20241022_154601000.WIT.3c.cont.0.seg2
+110d94b729367e419c9e4eeb6b2ed837593217210b2297e5b1d2cb7dbda0a964 *./raw/data/uT12/20241022_154701000.WIT.3c.cont.0.seg2
+c5d7f08a0a9359901f10d87b8ac82bc03b0266a62a2893120dc91bf0685e383a *./raw/data/uT12/20241022_154801000.WIT.3c.cont.0.seg2
+187df9b87e28cfab1077e91a60573640e98b8c98d86df1177e3350388e38d496 *./raw/data/uT12/20241022_154901000.WIT.3c.cont.0.seg2
+e33bb4235ae6127c59a4e14d8b6e0f768501984f1b03f86d343b6a831a4e6a45 *./raw/data/uT12/20241022_155001000.WIT.3c.cont.0.seg2
+81bf7ba18a54fc0817025dd370142d34701fa2bf6a3b70056175d0bd26688c0b *./raw/data/uT12/20241022_155101000.WIT.3c.cont.0.seg2
+3a9ae9631b795d92310cce12c9f8c7ce1a8b5ddd94efb9abde298f549c543266 *./raw/data/uT12/20241022_155201000.WIT.3c.cont.0.seg2
+2f5827998837a4e86bb90007a79501934be531522bfd9bd3ca50497a7bdb68e8 *./raw/data/uT12/20241022_155301000.WIT.3c.cont.0.seg2
+3df85a4e397685b862860c502ef95b68ed73675b0c4bee3f0746756abc084439 *./raw/data/uT12/20241022_155401000.WIT.3c.cont.0.seg2
+1dfaa5fdd1865de7215f2d9546b603df32aaf84eea62279f8fc4a980b06493d7 *./raw/data/uT12/20241022_155501000.WIT.3c.cont.0.seg2
+47fe993c6abe0f658f5d87e36fcad7c0d67c1e9529cead858376a445363392ea *./raw/data/uT12/20241022_155601000.WIT.3c.cont.0.seg2
+e035c9ca6b995272169b855622ac44925bbf5f759c28c5f7b34e12f95086020d *./raw/data/uT12/20241022_155701000.WIT.3c.cont.0.seg2
+3fb0ef6d81a910a4d35f068b04f5d5eab2688a65389a19d28535aeae05b23860 *./raw/data/uT12/20241022_155801000.WIT.3c.cont.0.seg2
+223a7ec6def46212571fbb067710cf309cb23c2e95b7ce4962ea802c32b5633d *./raw/data/uT12/20241022_155901000.WIT.3c.cont.0.seg2
+2cd5ab53ed608e3151035da03588922fb1b593bf595eb47ef1f022fde7d0a6c8 *./raw/data/uT12/20241022_160001000.WIT.3c.cont.0.seg2
+f4317e98d4af310bf9b67ae8f6c201488f8dce13768f9717c44004b952feb2a8 *./raw/data/uT12/20241022_160101000.WIT.3c.cont.0.seg2
+77d32b7b64948a6a55776ecb479e737cc729bc113bd8b16cbaf62e086e03a693 *./raw/data/uT12/20241022_160201000.WIT.3c.cont.0.seg2
+99337b05ecb81c9126ee80c37a3390f99facfbce1e0e1d34850149140f360483 *./raw/data/uT12/20241022_160301000.WIT.3c.cont.0.seg2
+edaef49449b8d926db1bb4bd01dd136f85da90b4c330bd1f90d2780d942034a4 *./raw/data/uT12/20241022_160401000.WIT.3c.cont.0.seg2
+8a82c8d514657211046bf28715246985cadef6dd15211e2046ecfcaabc28904a *./raw/data/uT12/20241022_160501000.WIT.3c.cont.0.seg2
+20ee237abdb1caa131775b8148ac9aa5233e42549f983711932a7fc1dbfa2d38 *./raw/data/uT12/20241022_160601000.WIT.3c.cont.0.seg2
+5669fa7df19a4c1b415168496da2ff4e1e3b24fef085b97003a9ed3213fc5481 *./raw/data/uT12/20241022_160701000.WIT.3c.cont.0.seg2
+d20a1b22c230bd2f799e8b9bc7b6ec0f550a67fc7af0bfbbd8c555ed267c353e *./raw/data/uT12/20241022_160801000.WIT.3c.cont.0.seg2
+c1f488918f7ca197350b401897c0d57de052a32975ab2117038812beee509129 *./raw/data/uT12/20241022_160901000.WIT.3c.cont.0.seg2
+384b555df307363b7e1400601416c70a297ca72ba956a1a13f6a67dfb5d97b70 *./raw/data/uT12/uT12_merge3comps.mseed
+16d7a266e50b7ebac10a81946c20184a9df6164103b42905f64ea1864b247844 *./raw/data/uT17/20241019_132834299.WIT.3c.tst.0.seg2
+a941219c730c63a06c836fff34384e0f5394e9aa0673e4726a2e89e3b0366914 *./raw/data/uT17/20241019_132848000.WIT.3c.cont.0.seg2
+997361cda46be9ed4830eb85ac9dd47682217778615ec2a94582b596492e4292 *./raw/data/uT17/20241019_132948000.WIT.3c.cont.0.seg2
+c558ebc52646f63f8d0a355669bafea797833c94fd7cf3e1b883f05f4206ef31 *./raw/data/uT17/20241019_133048000.WIT.3c.cont.0.seg2
+02da21b985e0a47953c3f426717755953f3086ff5c6c4ec243f3627dca040021 *./raw/data/uT17/20241019_133148000.WIT.3c.cont.0.seg2
+1877a34f697ef75c272ca6d2f3492a5aab5f7e9d4db87c054c2a5a1accd392e9 *./raw/data/uT17/20241019_133248000.WIT.3c.cont.0.seg2
+ffe14cb1c8e06250854c7eac1cc3d931b929a63b3503420d4501636034e1b510 *./raw/data/uT17/20241019_133348000.WIT.3c.cont.0.seg2
+5e9965068dd6610d30e8296f35fe7baa11c4f5251217d142ea82f8aee0a85daa *./raw/data/uT17/20241019_133448000.WIT.3c.cont.0.seg2
+968ca2f054599f848a00618f1ab416b403c00a082af18fdc3a8c434c86df4832 *./raw/data/uT17/20241019_133548000.WIT.3c.cont.0.seg2
+7cbe05c1b41cdd5135b338264a9c43acfbfc4aa3c6bbdd69327a4282a70f06fe *./raw/data/uT17/20241019_133648000.WIT.3c.cont.0.seg2
+17fcd28f9f931ebc84d9612eeab45615dcbf35b41394b7d9e4549d5ca447921d *./raw/data/uT17/20241019_133748000.WIT.3c.cont.0.seg2
+c50073a9f7fc2d5af435c7911caec27400b77fec2ec432b0cb6ff6697d75bb5a *./raw/data/uT17/20241019_133848000.WIT.3c.cont.0.seg2
+fbeb59db0dbf82b8457ef9952f71b4bcf69c45540e5dfbe26f5933929df5b685 *./raw/data/uT17/20241019_133948000.WIT.3c.cont.0.seg2
+466f65caafcbc87b0452e16041022f826e00c2b82f8aa9f82a9a04e450b385db *./raw/data/uT17/20241019_134048000.WIT.3c.cont.0.seg2
+efcc4692b7c86743ed1961d15e100b66d305a1d4ccfbd97a90925b8bb15a49fa *./raw/data/uT17/20241019_134148000.WIT.3c.cont.0.seg2
+415d3884eaf9c0b0c8855888e1a742c5dc11cedfb38aaa1b981a37fdb5e2d807 *./raw/data/uT17/20241019_134248000.WIT.3c.cont.0.seg2
+1ab8a0eec68d792b7b6898da7deb1028eacc01457c8be5ca349011970cc1be72 *./raw/data/uT17/20241019_134348000.WIT.3c.cont.0.seg2
+97dc954c6492076343eea0bddeb2372d5e46e4e0bf2b0245b90ea0879542ab48 *./raw/data/uT17/20241019_134448000.WIT.3c.cont.0.seg2
+21c905760713c1564cde30014ff1b74860911b47a7e5912336e4d98238df2c75 *./raw/data/uT17/20241019_134548000.WIT.3c.cont.0.seg2
+b65a758ad75a0059a333063614390ddfa9e2e24ee01f8fcabb506b3f94a5163a *./raw/data/uT17/20241019_134648000.WIT.3c.cont.0.seg2
+e69093c911dd1bf84b050d8dc30b9ce595e9562a5bd3b01193bf896f6a0df128 *./raw/data/uT17/20241019_134748000.WIT.3c.cont.0.seg2
+5a85bdca628425d3bee8775777741dc85e047c45ec981649df3fe2351daccf55 *./raw/data/uT17/20241019_134848000.WIT.3c.cont.0.seg2
+0a999100a1420e64fb5da7881d5248b5952833abc0be67275f28439f7828ba50 *./raw/data/uT17/20241019_134948000.WIT.3c.cont.0.seg2
+56b4d494869b848255e64c7f1ca9d0f105c598c1dc9fb345a99ef01a251ecfaf *./raw/data/uT17/20241019_135048000.WIT.3c.cont.0.seg2
+c32130027ec0633da38c5557a04c3c3c1f279798508d10c08752a019840f82e2 *./raw/data/uT17/20241019_135148000.WIT.3c.cont.0.seg2
+fd1b8e5eb5b4d0dfd44ac830c159c6ac8a516f0d4460cde030da532dbbb8bf2c *./raw/data/uT17/20241019_135248000.WIT.3c.cont.0.seg2
+1ac6cba45e464c1ac861fbb28f5993e7f737024b9e2072d0d6d55adecf5ff360 *./raw/data/uT17/20241019_135348000.WIT.3c.cont.0.seg2
+2ee13514d271115cba69dc529872a60388eb51e4179da5ad3e20bf1a887db8e8 *./raw/data/uT17/20241019_135448000.WIT.3c.cont.0.seg2
+e5628e8ed6231a3debf8cc4be4ff158062421f45eed05dfa5aecda48af1236d1 *./raw/data/uT17/20241019_135548000.WIT.3c.cont.0.seg2
+bb5ba3c9e10c69ab5b33a247a62b40392aacc110e6082a5c3655ca1edcb8606b *./raw/data/uT17/20241019_135648000.WIT.3c.cont.0.seg2
+45395aa64fdc55143ec7e3ea2e12b002629ef30f371f21e2a70370a9527641d5 *./raw/data/uT17/20241019_135748000.WIT.3c.cont.0.seg2
+0c3c5d6540aedca5c0aaf15fb54e3093d575be356b9b861f56282411234de737 *./raw/data/uT17/20241019_135848000.WIT.3c.cont.0.seg2
+4a85a397493457017a99f5182a19fe0d3734516945450c296a1a86e59dd7b6a8 *./raw/data/uT17/20241019_135948000.WIT.3c.cont.0.seg2
+102e82f4320e1c5301d18d653e25471b125a37dc5c9e9e18184f1d743269516a *./raw/data/uT17/20241019_140048000.WIT.3c.cont.0.seg2
+0ac93bf01d07ecd72d29e71c27877cb3dd84b50125676e087615dd5bcd23b95d *./raw/data/uT17/20241019_140148000.WIT.3c.cont.0.seg2
+346ba7611bfa39b03c491c8ede9fcdb639c98d3e5cac9e9943f1e6117a86038d *./raw/data/uT17/20241019_140248000.WIT.3c.cont.0.seg2
+9a70686a628c1e9fb54c798d133f8b8b5624ac108d2c2fcdc4f31afd148b71fd *./raw/data/uT17/20241019_140348000.WIT.3c.cont.0.seg2
+0ed22d74a5c9a78e19d04b64d8c358fa7b47e0a6b9bf9dac8c1be51841e65b8c *./raw/data/uT17/20241019_140448000.WIT.3c.cont.0.seg2
+979b976fbabbb297dfb921aefc762128b8e5e0eb33d8ea0cc5684f29ab64912d *./raw/data/uT17/20241019_140548000.WIT.3c.cont.0.seg2
+93ee519a7bef27c6c9af5c68283bc9b32556e352e8852576e07eb28ed0a361e5 *./raw/data/uT17/20241019_140648000.WIT.3c.cont.0.seg2
+e39041d2a3aa33fd52506f21460760095d5bbee900de96614a306e87cb70dace *./raw/data/uT17/20241019_140748000.WIT.3c.cont.0.seg2
+58eb3e87d808dfec7a5e0a67d82c49b31fea55fd7ae41b957e753ecd3939830d *./raw/data/uT17/20241019_140848000.WIT.3c.cont.0.seg2
+f21fe67cfa1a3e28a1806bc8943eaa576a71f324ffd2f0bc96737c10322c770f *./raw/data/uT17/20241019_140948000.WIT.3c.cont.0.seg2
+cbca561da9dbe976b17f2fdaf1b370bca2fe0f00b06b6643f05f4d427fcd5bea *./raw/data/uT17/20241019_141048000.WIT.3c.cont.0.seg2
+e3912ecc7c1a7dd770435e9c459e9b9cca51fad557b1c83c2fafe553dafba42b *./raw/data/uT17/20241019_141148000.WIT.3c.cont.0.seg2
+5215a48650427a396453ae9fdf42333dafac93c3129e70a6629b0e00f63ca937 *./raw/data/uT17/20241019_141248000.WIT.3c.cont.0.seg2
+e18d2047afaee8a241db783e88be6c82fb0e4ff8a42d9db49c08323bba2437cc *./raw/data/uT17/20241019_141348000.WIT.3c.cont.0.seg2
+ded3d9e35c3deb8193fb6111ab6661c1c4c6e3c4cbc9cd8dc3abe447d316ecbe *./raw/data/uT17/20241019_141448000.WIT.3c.cont.0.seg2
+254448a351c7fffe094176af9a0a3cec5339938165b01e3902ad144e7e22e355 *./raw/data/uT17/20241019_141548000.WIT.3c.cont.0.seg2
+d526c32db311f18bd5a04e12dc6df71a24a604196daf0d344a2afe07305355d5 *./raw/data/uT17/20241019_141648000.WIT.3c.cont.0.seg2
+de53b590c82836dd7789f102eabf59094fbb83e87968a3053ee5a66a31c47fd3 *./raw/data/uT17/20241019_141748000.WIT.3c.cont.0.seg2
+9a2cd0a21fdea55efd99d90b173e744c3d34956881b1108f463d90d8623bd97e *./raw/data/uT17/20241019_141848000.WIT.3c.cont.0.seg2
+b6727e8034386f2e0b7351e08c64490a033333dc8726a1983267403f69a7a2b2 *./raw/data/uT17/20241019_141948000.WIT.3c.cont.0.seg2
+76508613a52a4c09a8b4bcf75d94787e0c853307d244ca98e23c319479d11d1e *./raw/data/uT17/20241019_142048000.WIT.3c.cont.0.seg2
+af959febbd8ee0e3937fdd3930b6ad55c24230fc3422a86a9b554f400b3dfbbb *./raw/data/uT17/20241019_142148000.WIT.3c.cont.0.seg2
+8b45083fa618034bff867cfe7176fd9483d407e00e04a1abf0ad581f69a733ed *./raw/data/uT17/20241019_142248000.WIT.3c.cont.0.seg2
+cc8669c68f196284af41b709583b927c5970b79861c9d438812269cf764a4da6 *./raw/data/uT17/20241019_142348000.WIT.3c.cont.0.seg2
+7a09702ac50ab58cf42e408f28dc443fad6504104db8d29ec261d513f7b34053 *./raw/data/uT17/20241019_142448000.WIT.3c.cont.0.seg2
+cea4bb072d5d8b38b167fbe679c55a1c25539d12a8de849c17278ffff2c77ad5 *./raw/data/uT17/20241019_142548000.WIT.3c.cont.0.seg2
+7230a1e8f836ca686058502f22169c848e91072c31536046e6074563f31c7ba5 *./raw/data/uT17/20241019_142648000.WIT.3c.cont.0.seg2
+3f686f0ea4410199f4f132aef2252cdcbb6cedce0ead29c02148e95470410604 *./raw/data/uT17/20241019_142748000.WIT.3c.cont.0.seg2
+7acd79a18261f8e67a32a20b25119d47d06e6a6688f1de48e0195ac6af395c19 *./raw/data/uT17/20241019_142848000.WIT.3c.cont.0.seg2
+e5e1af029d29df41355d9aa9619e1480a6380f5c221abd138301f28bb7b67eaf *./raw/data/uT17/20241019_142948000.WIT.3c.cont.0.seg2
+082ebaf2b5cfc5f87e9aa8b139a283367e98fbf058dbfcb5ac61a1b1c0de654b *./raw/data/uT17/20241019_143048000.WIT.3c.cont.0.seg2
+108a426d2f27a6a43b81d8052fd418b39f6784c2d7916d232195620e2b0e410a *./raw/data/uT17/20241019_143148000.WIT.3c.cont.0.seg2
+35f4ec823259bbce22f0e261756560f6f9c1daa323fd90854167efccb0f745fe *./raw/data/uT17/20241019_143248000.WIT.3c.cont.0.seg2
+d807706a44ade2101d9780bb42707d027cd470eaa53f17c921420d6834a6ee92 *./raw/data/uT17/20241019_143348000.WIT.3c.cont.0.seg2
+ba5740e287125880662ec42343b140d33fa6c39c9012121909ee71fbbbbebb68 *./raw/data/uT17/20241019_143448000.WIT.3c.cont.0.seg2
+b499d9125640d8f0d4730cc3048dd523a35b69a8cd174958ce3cf48869b5378e *./raw/data/uT17/20241019_143548000.WIT.3c.cont.0.seg2
+8e0a64e5c3823570b4c937614eaa47dfb893cfe427eb1e7c161af2d69f234e68 *./raw/data/uT17/20241019_143648000.WIT.3c.cont.0.seg2
+48b1483b990635f4eb0c09248dbc512989c801c34db735b5a8a8f06887890d83 *./raw/data/uT17/20241019_143748000.WIT.3c.cont.0.seg2
+ef72edbdc58d727670a6b1d72dbf428883e6cdad873f86f024b50ea43e2d9d30 *./raw/data/uT17/20241019_143848000.WIT.3c.cont.0.seg2
+02aa25e25010a09e69f931b97fde2a8c9ca96523437686add6cd70d285a3d0c4 *./raw/data/uT17/20241019_143948000.WIT.3c.cont.0.seg2
+6b5a7ae9439b3733e3f630f702fd901fbfcaea8c1bb91ee36ea0163f57d6e0d8 *./raw/processing/1_merge mseed/1_seg2_to_mseed.ipynb
+545b3cd6dc210a24ebe6611eb3f7566a159778aebc02972c24a8a93171fad229 *./raw/processing/1_merge mseed/1_seg2_to_mseed.pdf
+3a53c2ab970db92428ed71e92e57c18aa215ba3bb94064180316a63492bae4d7 *./raw/processing/1_merge mseed/1_seg2_to_mseed.py
+86af05cdef45621b3ae1a922e3f1d2ead21e9021958cfca182b23b402eb396ce *./raw/processing/1_merge mseed/Merged data/A3_merge3comps.mseed
+66af6a5de17243395f581fd0e6ea6db5e5ea3a6fee1c0f1ab872fb8e01e5e20d *./raw/processing/1_merge mseed/Merged data/A4_merge3comps.mseed
+0c12b3b6ab6a0e88976db6962a91ff277b5cd81fc5e6d90a2d15162831d08b5b *./raw/processing/1_merge mseed/Merged data/A5_merge3comps.mseed
+9befedc742225e64a50f932461d5cf6f4a38edd27cac879683d4c2cb48b6a323 *./raw/processing/1_merge mseed/Merged data/A6_merge3comps.mseed
+5a5b377cff3ce57131d19c85d37419d057aa442997eaadf4a9505e39b272677e *./raw/processing/1_merge mseed/Merged data/B2_merge3comps.mseed
+16bd0bac9f8c3d4cfe1f82ebf9f347d140277b684d7c25be3608955ba44fa044 *./raw/processing/1_merge mseed/Merged data/B4_merge3comps.mseed
+2d426c8c0fe8192857854bd041c9e0ec55bc9d8c1dab23e4014bf2035744d1c1 *./raw/processing/1_merge mseed/Merged data/B6_merge3comps.mseed
+26ea084959cbdee014343bad131ad8a7051f0057774cb43ad8838e22b3ab3a60 *./raw/processing/1_merge mseed/Merged data/B7_merge3comps.mseed
+11d4399b1118636bd5097114a6ed78078c4f8b42941b0faaa2cd82436f5c303c *./raw/processing/1_merge mseed/Merged data/D1_merge3comps.mseed
+04b28f42bda59741238034c923e3ec5a87623f173d8ab103e1437f1e45773711 *./raw/processing/1_merge mseed/Merged data/D2_merge3comps.mseed
+b9dbc0fec9d852a490a6abc19478f57659b5cb3d1146715258960c92b94b0181 *./raw/processing/1_merge mseed/Merged data/D5_merge3comps.mseed
+bf8b22f3a08ada6ca2f364da0e8217315e094a7b26314ba6514dabba325581ce *./raw/processing/1_merge mseed/Merged data/E1A_merge3comps.mseed
+27f00707d34c2a48bf1d6313d42e5f762caff5139c3898c7cfadeff0feb21273 *./raw/processing/1_merge mseed/Merged data/E1B_merge3comps.mseed
+1a0197f8f0b02cb49d1963b9e9afe5562bbeedeef6c229621a8667a376761980 *./raw/processing/1_merge mseed/Merged data/E3A_merge3comps.mseed
+2de1f6242de3185837921bbcd50ad282ae0f21579f5c751e74ae59ac1b214a41 *./raw/processing/1_merge mseed/Merged data/E3B_merge3comps.mseed
+d3884de6285cfd148bd761fafe13a54d15be422ebcdf8c5d774e933bb4e84401 *./raw/processing/1_merge mseed/Merged data/F1_merge3comps.mseed
+c57c2e24cd8f608c59641246435c54b983ebfc4ea19a47491f2ec087df10e622 *./raw/processing/1_merge mseed/seg2_to_mseed.ipynb
+b73bbbf89da3854c406a14e3a53a6ffd8aa1dda11cf7e39ce4910ee0cbc8ae01 *./raw/processing/2_HVSR/10_result_all.png
+fcf7efbe1a1c7e6d37d17238dc86a119fb452e0872e0f4ffe902b4fff99ea503 *./raw/processing/2_HVSR/1_drag_n_drop.png
+44f135d92736bab790d683b228cdfbb8930b5ecdcb9baf03f79c185c869a1f83 *./raw/processing/2_HVSR/2_HVSR.html
+85bb8f80dd4bc14a69b4e01178788b0dbc8e1655f8c3cd26c110840017819d7c *./raw/processing/2_HVSR/2_HVSR.ipynb
+58c7bd33160229dcc03d61bbba2742b2db69b1d7b9601d5c976df5fe72031948 *./raw/processing/2_HVSR/2_HVSR.pdf
+c694fb6a8acd1bee797c7591d86adf744495b0b5d3217ce84bc378f04c3fa94e *./raw/processing/2_HVSR/2_insert_data.png
+c07361d8e109cb39da9c22e64947ebc7e17476609f42cb963a60e971535145a2 *./raw/processing/2_HVSR/3_open_hv.png
+7bcae15038d6cea8f1ca99d67009447097f404c46615ccddbe0fc91b6b3d0378 *./raw/processing/2_HVSR/4_windowing.png
+7a14be07446104b5a324ff8aaf5a91a815d34740b7666e1085464b87bc6a0fae *./raw/processing/2_HVSR/5_hv_calculate.png
+7d2756abae62a6b8a8cffda053ec96156d75bdfb6bccec77eebcbb09e364e108 *./raw/processing/2_HVSR/6_hv_result.png
+c2ce3feeb7b51b592d4b233042ad69563ed00e212cdaabdd6427896b13903f03 *./raw/processing/2_HVSR/7_save.png
+b2e6c57552c143d4fd8f890d7aa229e3c370565ffc89b33c9a486239ed5b38d9 *./raw/processing/2_HVSR/8_save_hv.png
+45212977793f43a642bfcee7b32f88dee00811382df19d6903cf182a57408876 *./raw/processing/2_HVSR/9_save_image.png
+018649fb965edb6064b3ca81ea888a62b4ead546d72c84adf57db0420c27373e *./raw/processing/2_HVSR/HV/A3.hv
+e0fa8aea42a005d4b30d91e12b46e3ac9d31b520bf333ee3dd0f6310b6a46e9a *./raw/processing/2_HVSR/HV/A3.log
+2c3254e3ea4dbf6c5932e212a1d55c570bbe083679400b7403981a724371d1e0 *./raw/processing/2_HVSR/HV/A4.hv
+f528b7d3b9e1f5a7fa5f79fa77ef405db4f4b90928fda7f4ac6bedb00cc0134a *./raw/processing/2_HVSR/HV/A4.log
+43c6537b91493811d127b1e92779177e9f32b69509ce14c35428728935a8c44e *./raw/processing/2_HVSR/HV/A5.hv
+2e3bfea0d5e02f3cfed412711826a9d2c6a5c44e96b4d3f6f71b88016f6b13a2 *./raw/processing/2_HVSR/HV/A5.log
+4fbc18874659a95d0e064c7acbea3079910e8e99f31483b5e962401164d625ba *./raw/processing/2_HVSR/HV/A6.hv
+ac1d6f041edb7e1594acaced35571ac357853ab3730fbe1f8f2843de62552004 *./raw/processing/2_HVSR/HV/A6.log
+41c30b37f941f381a9a75a71546cd4c99df04aec8aea8e76c9a35a688172a7f3 *./raw/processing/2_HVSR/HV/B2.hv
+d5b3f6544ad905b0528df7ecdeecd3e04ba619e323e0d8eb66798524743a1840 *./raw/processing/2_HVSR/HV/B2.log
+3e3abb7e188296e6d4f1bb837f90637f4289fe5b7c3e5520b7123245dc7aeded *./raw/processing/2_HVSR/HV/B4.hv
+7965646edadc0fa0a5da51b113f00abadc45465658e4c1d8f442add35cdb81b0 *./raw/processing/2_HVSR/HV/B4.log
+fb002a540140c9dea652b615356834f001c2b0a554b3912bdd01dac1e09aff01 *./raw/processing/2_HVSR/HV/B6.hv
+fcf4b739244c4ef7fe748289a9598d52de896bd401a22d7fc34ed0a51bd6c960 *./raw/processing/2_HVSR/HV/B6.log
+558a0981e1fce576d05e3a509228a2e4d71ba3719521c0452512182c9ce98397 *./raw/processing/2_HVSR/HV/B7.hv
+e8f6015000a5f5a304827aa60ae8930cce51a3b9986b95028d6e0856a12fbd82 *./raw/processing/2_HVSR/HV/B7.log
+9a886a448adb7b7c3841acf202cb535ae50831cf7044a2d724427151261102fc *./raw/processing/2_HVSR/HV/D1.hv
+dfac5492b5ab06df0ec16f48565d9d8d81d808610532e3481ccedf63140b6e1f *./raw/processing/2_HVSR/HV/D1.log
+ac04afb283a4805a55e2f279f3289f51bc54b23e924dcabf46b556b27bf7ce33 *./raw/processing/2_HVSR/HV/D2.hv
+373c68e49d4b6631c96814c749124ab00f99d0efef0d9375c7de7a1469028c31 *./raw/processing/2_HVSR/HV/D2.log
+46dd9c4bbb812c8be9246dd60313df7bf933fd0833572f974ff6e0f3fe34d659 *./raw/processing/2_HVSR/HV/D5.hv
+796289caea4a39a7d1eb2b9ff6a9e89715a4b4f6fc19d08599de9e960ef48d81 *./raw/processing/2_HVSR/HV/D5.log
+bca9538e9b42bcbabb2f8d1c8231fcd2b666c3d169d15186876a5da7a535cbbb *./raw/processing/2_HVSR/HV/E1A.hv
+851b3969164c018b660bb872bb86adae316a0b93c2e252d9dc03a0a4d34ef5ec *./raw/processing/2_HVSR/HV/E1A.log
+1d1debbc0c93c4a3dfa0cb42811abeeb5f5b1806cc03b026b8281a3094671bda *./raw/processing/2_HVSR/HV/E1B.hv
+a102d31ba30f1f91cc9cbdd4005ef65d366a9740c1bca8e0ae097a981650f091 *./raw/processing/2_HVSR/HV/E1B.log
+b9ea0454d9a9c5146424fd3cfd9ad136d63b04f03c63cd0318f8d3902bc3a2b3 *./raw/processing/2_HVSR/HV/E3A.hv
+3dff164d65f31fe101ec5de09ec498d1d1860764bde43ff401075dafeaefb320 *./raw/processing/2_HVSR/HV/E3A.log
+1f48619d56d0ec9e8cd80fb92540ff1039b45d017309032e87e069447833eadf *./raw/processing/2_HVSR/HV/E3B.hv
+c2ae37720bb12f09b4033cfa2de7ce296cec0faab5a431ddfad9aa44ff824f6b *./raw/processing/2_HVSR/HV/E3B.log
+b4ede8048605dde7638699b2101bec9dcd51ebcbb45a573e747a232658fd9a22 *./raw/processing/2_HVSR/HV/F1.hv
+f5fefb053a527094c04bc4c86b239344f8dfc50004d3dd9291d3ca4521b9b9fb *./raw/processing/2_HVSR/HV/F1.log
+a36c640dc1f5b5493bf43657b373be85f6664e515ca9a822a7ec5d3556de9c25 *./raw/processing/2_HVSR/test_file/uT12-HVSR.png
+005b29308595a34bc212aa8b4820a184bce49efb5fe2b67b5ebe7aac328f8ffd *./raw/processing/2_HVSR/test_file/uT12.hv
+a64cad64ca99fcff95cb8095bccf6d4913ff592ce875decd0984ff789ee9d8a0 *./raw/processing/2_HVSR/test_file/uT12.log
+9cdcd9edc31ee9aeee45cada575932a1f01e2c4a9c74ca8141e3e672087d53bb *./raw/processing/2_HVSR/test_file/uT12.txt
+c5401da7a9bfad863428ed812f5b08e2736623a828dedefdef167e83051f53b3 *./raw/processing/3_post processing/3_HV_check.html
+cea59b2e41f17373b9e8b838464cb3312d8262e83d379b118c8d0f485709fde8 *./raw/processing/3_post processing/3_HV_check.ipynb
+20745b3aed9a9d1d8d9dee369af0f5c32991486c290a8d8a446b703cf0cf9bca *./raw/processing/3_post processing/geopsy_hvsrcheck.py
+2fd0348588a40d42ce47869c4113b55035ebbc1f85fccee596baa5250d747a90 *./raw/processing/3_post processing/hvcheck_result.html
+6c52dc80b873d471089711cc5da854b5826d0f45294f85c0338e5a2fa6148ea3 *./raw/processing/3_post processing/pic1_SESAME Guideline.png
+8bffcbfd3024065b999c520ba1d6f715ffb7d75bf77eee54cf6b34876c004ea1 *./raw/processing/3_post processing/pic2_hvcheck.png
+4bafca58dab432649e24f5fc70d3989ce2a478937c38274913ced6ef4a3f2e4d *./raw/processing/3_post processing/pic3_save hv result.png
+378efba215a2750cc04a7e651cd00fa55a975b6079a85ec168421213031640b5 *./raw/processing/3_post processing/pic4_html.png
+652601a499ebd10fdee9dfe8dbf7963358a14c05db719d065d882fe5d0803451 *./raw/processing/4_inversi/4_inversi HVSR.ipynb
+036d8176596c93f0880697af2254eac368e7a26d5ccd1cda85691b6705cded81 *./raw/processing/4_inversi/HV model/HV_curve_plot.ipynb
+c3e23b90d1582b196a4c78e00d99861e2bf47d073c76a7b1acdf24f284bf07be *./raw/processing/4_inversi/Report/class_A3.dat
+e60d6b6f1e94e06064ea4c21919d6a50e56622c42be37247524fa5e5c1d18003 *./raw/processing/4_inversi/Report/class_A4.dat
+7bf2274b2f00e3967ea100d1132b81592feb27f4da704cc1f0c0e7cf12802efc *./raw/processing/4_inversi/Report/class_A5.dat
+3c300cf2703693fab52ea996e1cf129b990485f1fd25aa5f2c3395b772223b07 *./raw/processing/4_inversi/Report/class_A6.dat
+d0f686040e5f922fc7cffc5926678923c1d2159ef75ab95c0c66f13d45890525 *./raw/processing/4_inversi/Report/class_B2.dat
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 *./raw/processing/4_inversi/Report/class_B3.dat
+d3c7b4e1adff407d762b93de2b7e85405bf9bf222ffb6caef3d233016d54f990 *./raw/processing/4_inversi/Report/class_B4.dat
+27094a96cd601af25f610dcbdc19378c4c38cf41d8f75ae146f281e7af697fb8 *./raw/processing/4_inversi/Report/class_B6.dat
+70fb671c771f86d30636ba04a091cd9d7dc2fd09df861ad341dd02779f40eed6 *./raw/processing/4_inversi/Report/class_B7.dat
+4b461336c5d975c8d88ece8ed0e3ff873871d74afdfe225d45e6a89937b77500 *./raw/processing/4_inversi/Report/class_D1.dat
+45c69b844a6b76936608ba5a88fa88bf7488b97ea0664943677937a8e12ba988 *./raw/processing/4_inversi/Report/class_D2.dat
+03801703e3902d0124c54ec3321f655d53700295bdb71652ffa4e16860b35d71 *./raw/processing/4_inversi/Report/class_D5.dat
+a1f3f8c2fd9283d0459b3cf86d3317ff53ddf321a8015f86f923bcdf522aed22 *./raw/processing/4_inversi/Report/class_E1A.dat
+0dcc31ef193244012d2ea9db74f247f44fedbe19b0ee57d78d8c37c829354911 *./raw/processing/4_inversi/Report/class_E1B.dat
+48aff563760d902c9d13ed2aff25073c5306cab7684caa411f8bc01ab93f65c0 *./raw/processing/4_inversi/Report/class_E3A.dat
+b7b79c0c376e015a0576e239d3795689c17be977d24d2051d3924f7f557a411c *./raw/processing/4_inversi/Report/class_E3B.dat
+79b67f4a0dc013de3c279f29f3f95e4f8a41ccf88ff3ff0aeada66175a17416d *./raw/processing/4_inversi/Report/class_F1.dat
+ffc1760be69ed58022bf05b431e91893ae3bbe474ef55cd6bdb3a9272f0c3301 *./raw/processing/4_inversi/Report/ellipticity_A3.dat
+921a47f9d6034a78d060fb27b0bedd51b7c12bf21f28bfc5cd26cac322b06996 *./raw/processing/4_inversi/Report/ellipticity_A4.dat
+888083271f7837d35a28df259d76bfc314410d0b4d7d92be93dfdbe8e69338ab *./raw/processing/4_inversi/Report/ellipticity_A5.dat
+b361348a5f49e806c08902afcb00905ae744cd3d33a8fdbd38b44ec907070eab *./raw/processing/4_inversi/Report/ellipticity_A6.dat
+88841a2d615ff71ce6e5d4a1d0721ccc25a1328cc443eea3bb1463b156bc9cb1 *./raw/processing/4_inversi/Report/ellipticity_B2.dat
+838a0b7533d1fcdb67507cf387d111ec127813e964268005eed65863c85c28d6 *./raw/processing/4_inversi/Report/ellipticity_B4.dat
+44749500810e5801786ff3d7431ce575d466ec2ede2807f70e8835277d481ffc *./raw/processing/4_inversi/Report/ellipticity_B6.dat
+bb6ba6046f40f379d016cdb4dfa1f58ea88b4202afe8e222f484ad6629042d22 *./raw/processing/4_inversi/Report/ellipticity_B7.dat
+d823e98e804794bbf1645bb328fe621179012d6c0c002fb4035db95acefbb8f8 *./raw/processing/4_inversi/Report/ellipticity_D1.dat
+865f0f3618d79598c76781ea9fb8778ba3810d824d459f79a3d7e6519827d5cd *./raw/processing/4_inversi/Report/ellipticity_D2.dat
+bdc66f3ccd4b73b1b8bdc165600193b0da1d9ffccd5ac08e72f4acdf474c14df *./raw/processing/4_inversi/Report/ellipticity_D5.dat
+f666e6164710fcdcfb3e71299dfd637f51ec48aa12a284ad95694ef79dce18af *./raw/processing/4_inversi/Report/ellipticity_E1A.dat
+bfc5b36328535c2bb94127c360287502d2c61e92fe257ddb24d886b814b0415a *./raw/processing/4_inversi/Report/ellipticity_E1B.dat
+fef6f972b8e9dcb3ab823220d3aca6780ac0413483dbc596e9d835c5c893ff6a *./raw/processing/4_inversi/Report/ellipticity_E3A.dat
+e03412961e5e57a946407132fdc831f51bf150eb1cb7e289e8e3898e324bc087 *./raw/processing/4_inversi/Report/ellipticity_E3B.dat
+26a72cbebea2dd6bc64e1b8fcbec2691e44edb04bda4f9b6319f48da459aa71a *./raw/processing/4_inversi/Report/ellipticity_F1.dat
+b62a63802f8b7499c5ab2e3b7557bf53f1c09cc3d6e26d5acaed4372d0b11b74 *./raw/processing/4_inversi/Report/vs_A3.dat
+855ec95bfc3d697c5e868a8eee4a37267f0e2b0e9268cd6d979a763b85a45657 *./raw/processing/4_inversi/Report/vs_A4.dat
+a533d3aa07926fa9553588de53bdd2645b6086c0a1e5127f15defbbd6c782e45 *./raw/processing/4_inversi/Report/vs_A5.dat
+3cf5d3d84ddc4886f7263fb28c0acce6abb547428f52dcd761bd94e5e1ad3dfa *./raw/processing/4_inversi/Report/vs_A6.dat
+11588f391c4b0c2ebeade18eb867c88576f415c57c956529ed5b3282059f9770 *./raw/processing/4_inversi/Report/vs_B2.dat
+df244f49caedb2923a48c5791aabdc5c6488ae37059cf01901900f6d798cda6c *./raw/processing/4_inversi/Report/vs_B4.dat
+b8bcea163f30bbedad440984d0bfb9c6485309068f27b8d133877250283ff073 *./raw/processing/4_inversi/Report/vs_B6.dat
+6dc166c76fc0d5ebcbf1ce8a9b62c39905078fa1f2a82cc9dd2280f6ea23ef06 *./raw/processing/4_inversi/Report/vs_B7.dat
+2746f636ba350df32498f537d19dbc5b036c3e0089bc27e57ec53272b83202be *./raw/processing/4_inversi/Report/vs_D1.dat
+2c31e718b1bc2c76dcfa5f1c8b365e2a8f1a7308b58eb6a5bd6ebe114481ca91 *./raw/processing/4_inversi/Report/vs_D2.dat
+03944e5d3bbaf6fba0a3b400eb1e13f560a23016284014d9965869e59e84d012 *./raw/processing/4_inversi/Report/vs_D5.dat
+c8e1629c6e3a6ad4e800bdd0cf1130b406dbbc59fe54880efc21723bcb9b0367 *./raw/processing/4_inversi/Report/vs_E1A.dat
+9ced795a773e585e32a788cf18b466d3a0b896487c6a716162df77310ad63a50 *./raw/processing/4_inversi/Report/vs_E1B.dat
+12765020defbeeb56c96bf449f8ea742e4d7a2e8df80b41c63f353911b1719d7 *./raw/processing/4_inversi/Report/vs_E3A.dat
+441f2f23ca701bedf3d7c41bcc09cea2d1205a82c7dca056007f28b540864f2e *./raw/processing/4_inversi/Report/vs_E3B.dat
+a1c5ab0b0d33e0c69e0816ca4a46cb50c5552cb78032d3b5ab6c0d6b507661f7 *./raw/processing/4_inversi/Report/vs_F1.dat
+26f172988ffc8869671df347de8c22f8817a21b318ed8ada94acab70eed24778 *./raw/processing/4_inversi/Vs30Calculation.jpg
+e97b42801b2a3ece3d96912ebf3870556da9b5270a377480abbda8b3ab02a339 *./raw/processing/4_inversi/Vs_plot.ipynb
+ec492d1e38b4967df21a3f968a0af59e8cf2ae87e9b78e9080ba48b12c8b259c *./raw/processing/HVSR Processing.xlsx
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 *./raw/processing/dinver bash script.txt
+983b66d95f0bfaec007672e99962213e0c8ed06a97f77dbd866239226c6fe6ef *./raw/processing/package/hvcheck/hvcheck_modified/LICENSE
+213e77f9a04b312b6ec4c30756a4166b7643e5af2f1ec9bd88c354c93b256cc6 *./raw/processing/package/hvcheck/hvcheck_modified/README.md
+d391dadadb844c4003819021d9dc8bee358f6bd9413c7d64d57bac8417e54558 *./raw/processing/package/hvcheck/hvcheck_modified/geopsy_hvsrcheck.py
+fee6d35abf89ffc17f5e1e0bf7682f5a9a0b52373014653f55575151bf65d401 *./raw/processing/package/hvcheck/hvcheck_modified/hvcheck/__init__.py
+08edaf979194a3789e9b650c96fbe28c724bb1514c46195a6da8789ecd237226 *./raw/processing/package/hvcheck/hvcheck_modified/hvcheck/hvcheck.py
+dbc776bb8aa45056be44e3505e1406e82b95e647a0db261822baaede4103d3ff *./raw/processing/package/hvcheck/hvcheck_modified/setup.py
+e6947da610276cf94e2a267d877278db92350bb91160c700e281f64cc58649cd *./raw/processing/package/hvcheck/hvcheck_modified/test_file/3636_new.hv
+b003f8d8e49cd5352392d1e66584500981de44bd25472dd72195db2e97006182 *./raw/processing/package/hvcheck/hvcheck_modified/test_file/3636_new.log
+d9e266b066e34ffc6c39230bd290ddc0838d3ece2a99929094540c99a0e219a6 *./raw/processing/package/hvcheck/hvcheck_modified/test_file/c0c02_112105.hv
+9993f71d194922cd16e9fa0ffd467081c8f648e71065ff0d4fcda79f7fd29849 *./raw/processing/package/hvcheck/hvcheck_modified/test_file/c0c02_112105.log

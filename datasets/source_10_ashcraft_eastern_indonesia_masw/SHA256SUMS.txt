@@ -1,0 +1,3 @@
+b0e3e5b2e26fbe8d41959973ba2e381b572b9b2f9f0c09abf3488090d5de9e8a *./raw/Interview_coordinate_VS30_Kayadoe.xlsx
+fd9d54e54213600432065351db00a873e00c8366ae890a0870d9c69c4224cafa *./raw/Vs30PaperShaynaSM.pdf
+94ab72244fb5c51690ecf25b12a8f27c5154d6e0057dc359957aaac23c03dbbb *./raw/Vs30forMASWAllSites.xlsx

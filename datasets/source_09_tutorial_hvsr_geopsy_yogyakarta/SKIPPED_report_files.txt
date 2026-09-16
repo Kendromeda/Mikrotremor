@@ -1,0 +1,16 @@
+processing/4_inversi/Report/A3.report	13881324
+processing/4_inversi/Report/A4.report	24205644
+processing/4_inversi/Report/A5.report	50076732
+processing/4_inversi/Report/A6.report	16918332
+processing/4_inversi/Report/B2.report	9796812
+processing/4_inversi/Report/B4.report	26187612
+processing/4_inversi/Report/B6.report	20633580
+processing/4_inversi/Report/B7.report	34477212
+processing/4_inversi/Report/D1.report	30724284
+processing/4_inversi/Report/D2.report	28636812
+processing/4_inversi/Report/D5.report	4732620
+processing/4_inversi/Report/E1A.report	15863292
+processing/4_inversi/Report/E1B.report	761148
+processing/4_inversi/Report/E3A.report	6141852
+processing/4_inversi/Report/E3B.report	14258124
+processing/4_inversi/Report/F1.report	11899356

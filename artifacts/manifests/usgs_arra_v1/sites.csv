@@ -1,0 +1,4 @@
+site_id,source_id,latitude,longitude,elevation_m,country,location_accuracy_m,site_code
+usgs_arra_2013:CI.CCC,usgs_arra_2013,,,,USA,,CI.CCC
+usgs_arra_2013:CI.CLC,usgs_arra_2013,,,,USA,,CI.CLC
+usgs_arra_2013:CI.DRE,usgs_arra_2013,,,,USA,,CI.DRE

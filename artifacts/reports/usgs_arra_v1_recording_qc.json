@@ -1,0 +1,371 @@
+{
+  "failed": [],
+  "failed_count": 0,
+  "manifest_dir": "artifacts\\manifests\\usgs_arra_v1",
+  "passed": [
+    {
+      "components": [
+        "Z",
+        "N",
+        "E"
+      ],
+      "duration_s": 3600.0,
+      "recording_id": "0e1f5de2b2c72307dd785d0892361dd81a259351ce07e46904b0808dcd2a1ff1",
+      "relative_path": "CI.CLC/CI.CLC/CI_CLC_Raw_Data/CLC_HVSR/20110523214510.Q288.txt",
+      "samples": 720000,
+      "sampling_rate_hz": 200.0,
+      "source_channels": {
+        "E": "column_3",
+        "N": "column_2",
+        "Z": "column_1"
+      },
+      "start_time": null,
+      "structural_qc": "passed",
+      "units": "counts"
+    },
+    {
+      "components": [
+        "Z",
+        "N",
+        "E"
+      ],
+      "duration_s": 1593.0,
+      "recording_id": "18c83b13d1bf1c2314e3b9db8d0e2d9edc3df3ecf782c2896fc570e2ec0bb37f",
+      "relative_path": "CI.CCC/CI.CCC/CI_CCC_Raw_Data/CCC_HVSR/20110616181609.Q288.txt",
+      "samples": 318600,
+      "sampling_rate_hz": 200.0,
+      "source_channels": {
+        "E": "column_3",
+        "N": "column_2",
+        "Z": "column_1"
+      },
+      "start_time": null,
+      "structural_qc": "passed",
+      "units": "counts"
+    },
+    {
+      "components": [
+        "Z",
+        "N",
+        "E"
+      ],
+      "duration_s": 2654.0,
+      "recording_id": "245f0d1a0c192bd4fdfd70f40fe085621feeef6a33cd3b7b6c07e15e75800dad",
+      "relative_path": "CI.DRE/CI.DRE/CI_DRE_Raw_Data/DRE_HVSR/20110202202637.Q292.txt",
+      "samples": 530800,
+      "sampling_rate_hz": 200.0,
+      "source_channels": {
+        "E": "column_3",
+        "N": "column_2",
+        "Z": "column_1"
+      },
+      "start_time": null,
+      "structural_qc": "passed",
+      "units": "counts"
+    },
+    {
+      "components": [
+        "Z",
+        "N",
+        "E"
+      ],
+      "duration_s": 3600.0,
+      "recording_id": "2c5d3ae6277ab938ddd72261d102458bfd1cb89989a4fc82310edee7ff76aa0c",
+      "relative_path": "CI.CCC/CI.CCC/CI_CCC_Raw_Data/CCC_HVSR/20110616171108.Q289.txt",
+      "samples": 720000,
+      "sampling_rate_hz": 200.0,
+      "source_channels": {
+        "E": "column_3",
+        "N": "column_2",
+        "Z": "column_1"
+      },
+      "start_time": null,
+      "structural_qc": "passed",
+      "units": "counts"
+    },
+    {
+      "components": [
+        "Z",
+        "N",
+        "E"
+      ],
+      "duration_s": 2186.14,
+      "recording_id": "30447f13e3fbceccae38dc5f22de146f4baec45e650b1e0d72403858c9e07992",
+      "relative_path": "CI.DRE/CI.DRE/CI_DRE_Raw_Data/DRE_HVSR/20110202203517.Q289.txt",
+      "samples": 437228,
+      "sampling_rate_hz": 200.0,
+      "source_channels": {
+        "E": "column_3",
+        "N": "column_2",
+        "Z": "column_1"
+      },
+      "start_time": null,
+      "structural_qc": "passed",
+      "units": "counts"
+    },
+    {
+      "components": [
+        "Z",
+        "N",
+        "E"
+      ],
+      "duration_s": 1939.0,
+      "recording_id": "3c3078e0486ceac4a9bf59df04a18e7c3a47257f00d2c4dbc6852f6b3c8a60f6",
+      "relative_path": "CI.CLC/CI.CLC/CI_CLC_Raw_Data/CLC_HVSR/20110523225402.Q292.txt",
+      "samples": 387800,
+      "sampling_rate_hz": 200.0,
+      "source_channels": {
+        "E": "column_3",
+        "N": "column_2",
+        "Z": "column_1"
+      },
+      "start_time": null,
+      "structural_qc": "passed",
+      "units": "counts"
+    },
+    {
+      "components": [
+        "Z",
+        "N",
+        "E"
+      ],
+      "duration_s": 3600.0,
+      "recording_id": "5272bb5c7b222ee5f2500f4239cc9e7a96fd4cb460f4a936c8ed750066f46f78",
+      "relative_path": "CI.CCC/CI.CCC/CI_CCC_Raw_Data/CCC_HVSR/20110616171609.Q288.txt",
+      "samples": 720000,
+      "sampling_rate_hz": 200.0,
+      "source_channels": {
+        "E": "column_3",
+        "N": "column_2",
+        "Z": "column_1"
+      },
+      "start_time": null,
+      "structural_qc": "passed",
+      "units": "counts"
+    },
+    {
+      "components": [
+        "Z",
+        "N",
+        "E"
+      ],
+      "duration_s": 3600.0,
+      "recording_id": "78cd31165ad98e29db4ac5f7729139a7b4cb7912e85d2f839d4798c570bb29d4",
+      "relative_path": "CI.DRE/CI.DRE/CI_DRE_Raw_Data/DRE_HVSR/20110202192637.Q292.txt",
+      "samples": 720000,
+      "sampling_rate_hz": 200.0,
+      "source_channels": {
+        "E": "column_3",
+        "N": "column_2",
+        "Z": "column_1"
+      },
+      "start_time": null,
+      "structural_qc": "passed",
+      "units": "counts"
+    },
+    {
+      "components": [
+        "Z",
+        "N",
+        "E"
+      ],
+      "duration_s": 3600.0,
+      "recording_id": "8e0bd8f4da0efd680dc065b47fd3e2872c14714b7017ac0dbd3b10d4429fc889",
+      "relative_path": "CI.CLC/CI.CLC/CI_CLC_Raw_Data/CLC_HVSR/20110523214704.Q289.txt",
+      "samples": 720000,
+      "sampling_rate_hz": 200.0,
+      "source_channels": {
+        "E": "column_3",
+        "N": "column_2",
+        "Z": "column_1"
+      },
+      "start_time": null,
+      "structural_qc": "passed",
+      "units": "counts"
+    },
+    {
+      "components": [
+        "Z",
+        "N",
+        "E"
+      ],
+      "duration_s": 2394.75,
+      "recording_id": "95bafd93cb604a29cd847410ac88806c36e3cfd90ea30d987a3105951a3d60c6",
+      "relative_path": "CI.CLC/CI.CLC/CI_CLC_Raw_Data/CLC_HVSR/20110523224704.Q289.txt",
+      "samples": 478950,
+      "sampling_rate_hz": 200.0,
+      "source_channels": {
+        "E": "column_3",
+        "N": "column_2",
+        "Z": "column_1"
+      },
+      "start_time": null,
+      "structural_qc": "passed",
+      "units": "counts"
+    },
+    {
+      "components": [
+        "Z",
+        "N",
+        "E"
+      ],
+      "duration_s": 1451.0,
+      "recording_id": "9b3234bba8ab50f77eb51f28f13eddaae0fa70248b0ce1ed44ead736d51b1c7d",
+      "relative_path": "CI.CCC/CI.CCC/CI_CCC_Raw_Data/CCC_HVSR/20110616182012.Q292.txt",
+      "samples": 290200,
+      "sampling_rate_hz": 200.0,
+      "source_channels": {
+        "E": "column_3",
+        "N": "column_2",
+        "Z": "column_1"
+      },
+      "start_time": null,
+      "structural_qc": "passed",
+      "units": "counts"
+    },
+    {
+      "components": [
+        "Z",
+        "N",
+        "E"
+      ],
+      "duration_s": 3600.0,
+      "recording_id": "a395b0a40f045283789b1c3a4a819c5ddb279b89f833740ad68672da24f21024",
+      "relative_path": "CI.CCC/CI.CCC/CI_CCC_Raw_Data/CCC_HVSR/20110616172011.Q292.txt",
+      "samples": 720000,
+      "sampling_rate_hz": 200.0,
+      "source_channels": {
+        "E": "column_3",
+        "N": "column_2",
+        "Z": "column_1"
+      },
+      "start_time": null,
+      "structural_qc": "passed",
+      "units": "counts"
+    },
+    {
+      "components": [
+        "Z",
+        "N",
+        "E"
+      ],
+      "duration_s": 2472.0,
+      "recording_id": "bbd90a74dcf8b5f66424acf73739e4edffc7cebc2880724fd87befb60fe7e95c",
+      "relative_path": "CI.DRE/CI.DRE/CI_DRE_Raw_Data/DRE_HVSR/20110202203158.Q288.txt",
+      "samples": 494400,
+      "sampling_rate_hz": 200.0,
+      "source_channels": {
+        "E": "column_3",
+        "N": "column_2",
+        "Z": "column_1"
+      },
+      "start_time": null,
+      "structural_qc": "passed",
+      "units": "counts"
+    },
+    {
+      "components": [
+        "Z",
+        "N",
+        "E"
+      ],
+      "duration_s": 3600.0,
+      "recording_id": "bfd3c0056919f3556d5726af264d4b2829d998543773470ec4d9cb0e089e5fcf",
+      "relative_path": "CI.CLC/CI.CLC/CI_CLC_Raw_Data/CLC_HVSR/20110523215402.Q292.txt",
+      "samples": 720000,
+      "sampling_rate_hz": 200.0,
+      "source_channels": {
+        "E": "column_3",
+        "N": "column_2",
+        "Z": "column_1"
+      },
+      "start_time": null,
+      "structural_qc": "passed",
+      "units": "counts"
+    },
+    {
+      "components": [
+        "Z",
+        "N",
+        "E"
+      ],
+      "duration_s": 3600.0,
+      "recording_id": "ca620ed59be6341dc27206737cdf6e64bc6e713504219ac0984768584e6dc1e1",
+      "relative_path": "CI.DRE/CI.DRE/CI_DRE_Raw_Data/DRE_HVSR/20110202193517.Q289.txt",
+      "samples": 720000,
+      "sampling_rate_hz": 200.0,
+      "source_channels": {
+        "E": "column_3",
+        "N": "column_2",
+        "Z": "column_1"
+      },
+      "start_time": null,
+      "structural_qc": "passed",
+      "units": "counts"
+    },
+    {
+      "components": [
+        "Z",
+        "N",
+        "E"
+      ],
+      "duration_s": 2555.0,
+      "recording_id": "caf0f0bcd506b8cd2a916e83daa96df3c9925f1e1da9f31e793e2cc10f47414d",
+      "relative_path": "CI.CLC/CI.CLC/CI_CLC_Raw_Data/CLC_HVSR/20110523224510.Q288.txt",
+      "samples": 511000,
+      "sampling_rate_hz": 200.0,
+      "source_channels": {
+        "E": "column_3",
+        "N": "column_2",
+        "Z": "column_1"
+      },
+      "start_time": null,
+      "structural_qc": "passed",
+      "units": "counts"
+    },
+    {
+      "components": [
+        "Z",
+        "N",
+        "E"
+      ],
+      "duration_s": 3600.0,
+      "recording_id": "d463b2f9205759ca820af6f07afa6cd52f57b0d1c4f265b083ebad5562c17fcb",
+      "relative_path": "CI.DRE/CI.DRE/CI_DRE_Raw_Data/DRE_HVSR/20110202193158.Q288.txt",
+      "samples": 720000,
+      "sampling_rate_hz": 200.0,
+      "source_channels": {
+        "E": "column_3",
+        "N": "column_2",
+        "Z": "column_1"
+      },
+      "start_time": null,
+      "structural_qc": "passed",
+      "units": "counts"
+    },
+    {
+      "components": [
+        "Z",
+        "N",
+        "E"
+      ],
+      "duration_s": 2176.065,
+      "recording_id": "e19516fc76571160308314c64751fe32207a945ebeb8939d016b88d17ebd814e",
+      "relative_path": "CI.CCC/CI.CCC/CI_CCC_Raw_Data/CCC_HVSR/20110616181108.Q289.txt",
+      "samples": 435213,
+      "sampling_rate_hz": 200.0,
+      "source_channels": {
+        "E": "column_3",
+        "N": "column_2",
+        "Z": "column_1"
+      },
+      "start_time": null,
+      "structural_qc": "passed",
+      "units": "counts"
+    }
+  ],
+  "passed_count": 18,
+  "recording_count": 18,
+  "source_id": "usgs_arra_2013",
+  "status": "passed"
+}

@@ -1,0 +1,5 @@
+9cd8aba299bd7ac7657351f0d855ef0e5fff555a6491d2b90b232d1e4124c36f *./raw/Ambraseys_Curve.xlsx
+a47c1cdefc2f608168124edb174772fc18437144cad9a56a220183ad5e352b8c *./raw/Data_GSS_Kg.docx
+392a5eace41a06ea37444e5bc07d07a89c851260326c000246c0cad04d0c2516 *./raw/Simplified_Method_Idriss_Palu_ER60.xlsx
+17db7ddc5e01b037c0a0d92b37fb16022b4919fc8f77602e9266cd7c398ac61b *./raw/The_Runoff_water.xlsx
+36a980d1451ab10773a9cd85600f6c1b14ad3c10b2f28ef108e9ca609f3bd9d2 *./raw/Yield_Strength_Olson_method.xlsx

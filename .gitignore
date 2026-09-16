@@ -16,4 +16,23 @@ build
 scratch
 env
 venv
+.venv
 __MACOSX
+
+# Tooling caches
+.pytest_cache
+.mypy_cache
+.ruff_cache
+.coverage
+htmlcov
+
+# Raw data must never enter Git (large, immutable, externally sourced)
+datasets/**/raw/
+datasets_global/**/raw/
+
+# Derived artifacts (rebuildable from raw + config)
+artifacts/curves/
+artifacts/runs/
+
+# Checksum cache (rebuildable, machine-specific mtimes)
+artifacts/cache/
