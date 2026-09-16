@@ -138,6 +138,40 @@ A `preprocess run` exits non-zero when any recording failed to produce a curve.
 That is intentional: a failed recording is recorded in the index with its
 reason, and an operator should have to notice.
 
+## Dataset snapshots and the vertical slice
+
+A snapshot joins model-ready curves to their sites and labels by identifier
+only. Nothing is matched on file name or on proximity, so a row exists only when
+a curve, a recording and a cited label agree on the same site.
+
+```bash
+uv run mhvsr-vs30 dataset build --manifest artifacts/manifests/usgs_arra_v1 --profile configs/preprocessing/training_v1.yaml --output artifacts/datasets/usgs_arra_v1__training_v1
+```
+
+Two guards are on by default and both have to be switched off deliberately:
+
+- Only labels marked `independent_of_hvsr` enter. A Vs30 inverted from the same
+  HVSR the model reads is circular, and a score computed against it would be
+  meaningless. `--allow-dependent-labels` overrides this.
+- Each site carries one unit of weight however many times it was recorded, so a
+  site with six recordings cannot outvote a site with one.
+
+```bash
+uv run mhvsr-vs30 train smoke --manifest artifacts/manifests/usgs_arra_v1 --profile configs/preprocessing/training_v1.yaml --output artifacts/runs/loso --report artifacts/reports/loso.json
+```
+
+The split is leave-one-site-out, because a physical location is the unit of
+independence: six recordings of one site are six views of the same ground. Only
+two estimators run, a weighted median and ridge on log Vs30, both deliberately
+dull. With three independent sites, anything with capacity to spare would fit
+the fold rather than the physics.
+
+Every report is stamped `evaluation_scope: engineering_only`,
+`promotion_eligible: false` and `n_sites`, and carries a sentence saying why the
+numbers are not a scientific result. That stamp is the point of the command: it
+proves the pipeline runs without a notebook and does not leak a site across the
+split, and it proves nothing else.
+
 ## Adding a source
 
 Write a YAML file in `configs/datasets/`. It records only claims you verified in

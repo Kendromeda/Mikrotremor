@@ -30,6 +30,8 @@ from mhvsr_vs30.manifest.validation import validate_manifest
 from mhvsr_vs30.preprocessing.batch import run_profile, write_report
 from mhvsr_vs30.preprocessing.compare import compare_profiles
 from mhvsr_vs30.preprocessing.config import load_profile
+from mhvsr_vs30.training.dataset import build_dataset
+from mhvsr_vs30.training.evaluate import run_leave_one_site_out
 
 __all__ = ["main"]
 
@@ -167,6 +169,34 @@ def _cmd_preprocess_compare(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_dataset_build(args: argparse.Namespace) -> int:
+    manifest = read_manifest(args.manifest)
+    profile = load_profile(args.profile)
+    dataset = build_dataset(
+        manifest,
+        profile,
+        curves_root=args.curves,
+        manifest_dir=args.manifest,
+        require_independent_labels=not args.allow_dependent_labels,
+    )
+    dataset.write(args.output)
+    payload = dict(dataset.metadata)
+    payload["output_dir"] = str(args.output)
+    _emit(payload)
+    return 0
+
+
+def _cmd_train_smoke(args: argparse.Namespace) -> int:
+    manifest = read_manifest(args.manifest)
+    profile = load_profile(args.profile)
+    dataset = build_dataset(manifest, profile, curves_root=args.curves, manifest_dir=args.manifest)
+    report = run_leave_one_site_out(dataset, args.output, ridge_alpha=args.alpha)
+    if args.report is not None:
+        write_report(report, args.report)
+    _emit({k: v for k, v in report.items() if k not in ("models", "environment")})
+    return 1 if report["site_leakage_detected"] else 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="mhvsr-vs30", description=__doc__)
     parser.add_argument("--version", action="version", version=__version__)
@@ -227,6 +257,35 @@ def build_parser() -> argparse.ArgumentParser:
     compare.add_argument("--indexes", default=Path("artifacts/curve_indexes"), type=Path)
     compare.add_argument("--report", default=None, type=Path)
     compare.set_defaults(handler=_cmd_preprocess_compare)
+
+    dataset = subcommands.add_parser("dataset", help="join curves to labels")
+    dataset_actions = dataset.add_subparsers(dest="action", required=True)
+
+    build = dataset_actions.add_parser("build", help="build a training snapshot")
+    build.add_argument("--manifest", required=True, type=Path)
+    build.add_argument("--profile", required=True, type=Path)
+    build.add_argument("--output", required=True, type=Path)
+    build.add_argument("--curves", default=Path("artifacts/curves"), type=Path)
+    build.add_argument(
+        "--allow-dependent-labels",
+        action="store_true",
+        help="include labels that were derived from HVSR (circular; off by default)",
+    )
+    build.set_defaults(handler=_cmd_dataset_build)
+
+    train = subcommands.add_parser("train", help="baseline models over grouped splits")
+    train_actions = train.add_subparsers(dest="action", required=True)
+
+    smoke = train_actions.add_parser(
+        "smoke", help="leave-one-site-out smoke test; never a scientific result"
+    )
+    smoke.add_argument("--manifest", required=True, type=Path)
+    smoke.add_argument("--profile", required=True, type=Path)
+    smoke.add_argument("--output", required=True, type=Path)
+    smoke.add_argument("--curves", default=Path("artifacts/curves"), type=Path)
+    smoke.add_argument("--alpha", default=1.0, type=float)
+    smoke.add_argument("--report", default=None, type=Path)
+    smoke.set_defaults(handler=_cmd_train_smoke)
 
     return parser
 

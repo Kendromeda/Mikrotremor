@@ -32,6 +32,7 @@ datasets_global/**/raw/
 
 # Derived artifacts (rebuildable from raw + config)
 artifacts/curves/
+artifacts/datasets/
 artifacts/runs/
 
 # Checksum cache (rebuildable, machine-specific mtimes)

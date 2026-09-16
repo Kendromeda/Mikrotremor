@@ -1,0 +1,192 @@
+{
+  "dataset": {
+    "label_independence": {
+      "independent_of_hvsr": 17
+    },
+    "manifest_dir": "artifacts\\manifests\\usgs_arra_v1",
+    "manifest_snapshot_hash": "6f4e7338ccaf74f2aee80ac8d7c1cca7b1ac8bd078dde2f543b054f4ae4010d4",
+    "profile_id": "training_v1",
+    "profile_identity": "28fb5f4eff4dddd27a94d149625216649da88d48e3e010602d6a810dd16a2d89",
+    "recordings_per_site": {
+      "usgs_arra_2013:CI.CCC": 6,
+      "usgs_arra_2013:CI.CLC": 5,
+      "usgs_arra_2013:CI.DRE": 6
+    },
+    "source_id": "usgs_arra_2013",
+    "vs30_by_site": {
+      "usgs_arra_2013:CI.CCC": 432.0,
+      "usgs_arra_2013:CI.CLC": 1464.0,
+      "usgs_arra_2013:CI.DRE": 196.0
+    }
+  },
+  "environment": {
+    "code_commit": "61afc467e7913ab2fe51d3adc200a4881c792733",
+    "code_dirty": true,
+    "lockfile_hash": "f6d579ae5bc30993363b3968396ae0e0408cd0532a5af7c5c175416db9e7e23b",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python_version": "3.12.13",
+    "source_tree_hash": "955c39d6b045d2c971fa49353634e3fde9385c5b6cbfc1570f890066e38dc5f3",
+    "tool_version": "0.2.0"
+  },
+  "evaluation_scope": "engineering_only",
+  "models": {
+    "median_vs30": {
+      "per_fold": [
+        {
+          "bias_ln": -0.7903109290135939,
+          "mean_abs_residual_ln": 0.7903109290135939,
+          "n_rows": 6,
+          "n_test_rows": 6,
+          "n_train_rows": 11,
+          "nehrp_class_accuracy": 0.0,
+          "nehrp_unconservative_rate": 0.0,
+          "observed_nehrp": "C",
+          "observed_vs30_mps": 432.0,
+          "predicted_nehrp": "D",
+          "predicted_vs30_mps_mean": 196.0,
+          "sigma_ln": 0.0,
+          "test_site": "usgs_arra_2013:CI.CCC",
+          "train_sites": [
+            "usgs_arra_2013:CI.CLC",
+            "usgs_arra_2013:CI.DRE"
+          ],
+          "weighted_n_sites": 0.9999999999999999
+        },
+        {
+          "bias_ln": -1.220502106277146,
+          "mean_abs_residual_ln": 1.220502106277146,
+          "n_rows": 5,
+          "n_test_rows": 5,
+          "n_train_rows": 12,
+          "nehrp_class_accuracy": 0.0,
+          "nehrp_unconservative_rate": 0.0,
+          "observed_nehrp": "B",
+          "observed_vs30_mps": 1464.0,
+          "predicted_nehrp": "C",
+          "predicted_vs30_mps_mean": 432.0,
+          "sigma_ln": 0.0,
+          "test_site": "usgs_arra_2013:CI.CLC",
+          "train_sites": [
+            "usgs_arra_2013:CI.CCC",
+            "usgs_arra_2013:CI.DRE"
+          ],
+          "weighted_n_sites": 1.0
+        },
+        {
+          "bias_ln": 0.7903109290135939,
+          "mean_abs_residual_ln": 0.7903109290135939,
+          "n_rows": 6,
+          "n_test_rows": 6,
+          "n_train_rows": 11,
+          "nehrp_class_accuracy": 0.0,
+          "nehrp_unconservative_rate": 1.0,
+          "observed_nehrp": "D",
+          "observed_vs30_mps": 196.0,
+          "predicted_nehrp": "C",
+          "predicted_vs30_mps_mean": 432.0,
+          "sigma_ln": 0.0,
+          "test_site": "usgs_arra_2013:CI.DRE",
+          "train_sites": [
+            "usgs_arra_2013:CI.CCC",
+            "usgs_arra_2013:CI.CLC"
+          ],
+          "weighted_n_sites": 0.9999999999999999
+        }
+      ],
+      "pooled": {
+        "bias_ln": -0.4068340354257154,
+        "mean_abs_residual_ln": 0.9337079881014447,
+        "n_rows": 17,
+        "nehrp_class_accuracy": 0.0,
+        "nehrp_unconservative_rate": 0.33333333333333337,
+        "sigma_ln": 0.8645357758784563,
+        "weighted_n_sites": 2.9999999999999996
+      }
+    },
+    "ridge_log_vs30": {
+      "per_fold": [
+        {
+          "bias_ln": 0.508266102133912,
+          "mean_abs_residual_ln": 0.508266102133912,
+          "n_rows": 6,
+          "n_test_rows": 6,
+          "n_train_rows": 11,
+          "nehrp_class_accuracy": 0.8333333333333334,
+          "nehrp_unconservative_rate": 0.16666666666666669,
+          "observed_nehrp": "C",
+          "observed_vs30_mps": 432.0,
+          "predicted_nehrp": "C",
+          "predicted_vs30_mps_mean": 719.8598760959944,
+          "sigma_ln": 0.06852874699249527,
+          "test_site": "usgs_arra_2013:CI.CCC",
+          "train_sites": [
+            "usgs_arra_2013:CI.CLC",
+            "usgs_arra_2013:CI.DRE"
+          ],
+          "weighted_n_sites": 0.9999999999999999
+        },
+        {
+          "bias_ln": -0.8812937901034568,
+          "mean_abs_residual_ln": 0.8812937901034568,
+          "n_rows": 5,
+          "n_test_rows": 5,
+          "n_train_rows": 12,
+          "nehrp_class_accuracy": 0.2,
+          "nehrp_unconservative_rate": 0.0,
+          "observed_nehrp": "B",
+          "observed_vs30_mps": 1464.0,
+          "predicted_nehrp": "C",
+          "predicted_vs30_mps_mean": 635.5950377162035,
+          "sigma_ln": 0.29091814228947765,
+          "test_site": "usgs_arra_2013:CI.CLC",
+          "train_sites": [
+            "usgs_arra_2013:CI.CCC",
+            "usgs_arra_2013:CI.DRE"
+          ],
+          "weighted_n_sites": 1.0
+        },
+        {
+          "bias_ln": 0.5654935078192249,
+          "mean_abs_residual_ln": 0.5654935078192249,
+          "n_rows": 6,
+          "n_test_rows": 6,
+          "n_train_rows": 11,
+          "nehrp_class_accuracy": 0.5000000000000001,
+          "nehrp_unconservative_rate": 0.5000000000000001,
+          "observed_nehrp": "D",
+          "observed_vs30_mps": 196.0,
+          "predicted_nehrp": "D",
+          "predicted_vs30_mps_mean": 348.96346605775744,
+          "sigma_ln": 0.15127682337519593,
+          "test_site": "usgs_arra_2013:CI.DRE",
+          "train_sites": [
+            "usgs_arra_2013:CI.CCC",
+            "usgs_arra_2013:CI.CLC"
+          ],
+          "weighted_n_sites": 0.9999999999999999
+        }
+      ],
+      "pooled": {
+        "bias_ln": 0.06415527328322661,
+        "mean_abs_residual_ln": 0.6516844666855313,
+        "n_rows": 17,
+        "nehrp_class_accuracy": 0.5111111111111112,
+        "nehrp_unconservative_rate": 0.22222222222222224,
+        "sigma_ln": 0.6963386669183522,
+        "weighted_n_sites": 2.9999999999999996
+      }
+    }
+  },
+  "n_rows": 17,
+  "n_sites": 3,
+  "not_a_scientific_result_because": "3 independent sites is far below the 30 needed for a defensible generalisation estimate; these numbers show only that the pipeline runs and does not leak a site across the split",
+  "promotion_eligible": false,
+  "ridge_alpha": 1.0,
+  "site_leakage_detected": [],
+  "sites": [
+    "usgs_arra_2013:CI.CCC",
+    "usgs_arra_2013:CI.CLC",
+    "usgs_arra_2013:CI.DRE"
+  ],
+  "split": "leave_one_site_out"
+}

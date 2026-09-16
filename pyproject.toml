@@ -85,5 +85,5 @@ strict = true
 plugins = ["pydantic.mypy"]
 
 [[tool.mypy.overrides]]
-module = ["obspy.*", "hvsrpy.*", "pyarrow.*"]
+module = ["obspy.*", "hvsrpy.*", "pyarrow.*", "sklearn.*", "joblib.*"]
 ignore_missing_imports = true
