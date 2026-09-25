@@ -7,6 +7,7 @@ from pathlib import Path
 
 import matplotlib
 import numpy as np
+import pytest
 
 from mhvsr_vs30.hvsr_inversion import forward_body_wave_hvsr
 
@@ -50,7 +51,10 @@ def test_notebook_declares_body_wave_forward_without_ellipticity() -> None:
     assert "run_pso_hvsr_inversion" in text
 
 
-def test_notebook_executes_end_to_end_with_a_small_geopsy_curve(tmp_path: Path) -> None:
+@pytest.mark.parametrize("mode", ["auto", "manual"])
+def test_notebook_executes_end_to_end_with_a_small_geopsy_curve(
+    tmp_path: Path, mode: str
+) -> None:
     matplotlib.use("Agg")
     hv_path = tmp_path / "synthetic.hv"
     output_dir = tmp_path / "outputs"
@@ -65,6 +69,9 @@ def test_notebook_executes_end_to_end_with_a_small_geopsy_curve(tmp_path: Path) 
         source = source.replace(
             'HV_FILE = Path(r"D:\\Kulter_2026\\hasil_HV\\T68.hv")',
             f'HV_FILE = Path(r"{hv_path}")',
+        )
+        source = source.replace(
+            'INITIAL_MODEL_MODE = "auto"', f'INITIAL_MODEL_MODE = "{mode}"'
         )
         source = source.replace("PSO_PARTICLES = 50", "PSO_PARTICLES = 6")
         source = source.replace("PSO_ITERATIONS = 80", "PSO_ITERATIONS = 2")
@@ -83,6 +90,11 @@ def test_notebook_executes_end_to_end_with_a_small_geopsy_curve(tmp_path: Path) 
     summary = json.loads((output_dir / "inversion_summary.json").read_text(encoding="utf-8"))
     assert summary["run_state"] == "complete"
     assert summary["method"]["forward"].startswith("1D vertically incident S/P body-wave")
+    initial_model = summary["configuration"]["initial_model"]
+    assert initial_model["mode"] == mode
+    assert initial_model["initial_particle_used_by_pso"] is (mode == "auto")
+    finite_layers = summary["configuration"]["finite_layer_count"]
+    assert len(summary["configuration"]["vs_bounds_m_s"]) == finite_layers + 1
     assert (output_dir / "all_models.csv").is_file()
     assert (output_dir / "best_models.csv").is_file()
     assert (output_dir / "inversion_qc.png").is_file()
