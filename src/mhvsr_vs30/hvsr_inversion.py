@@ -436,12 +436,15 @@ def run_pso_hvsr_inversion(
     qs: float | ArrayLike = 1.0e9,
     reference_frequency_hz: float = 1.0,
     require_nondecreasing_vs: bool = False,
+    initial_particle: ArrayLike | None = None,
 ) -> PsoInversionResult:
     """Invert one HVSR curve with bounded, deterministic conventional PSO.
 
     Initial particle positions are uniform within the search space and initial
     velocities are zero, matching the supplied paper workflow.  This is the
     conventional PSO update in the supplied text, not a claim of exact RR-PSO.
+    ``initial_particle`` (``[h_1..h_L, Vs_1..Vs_(L+1)]``), when given, is clipped
+    to the bounds and replaces particle 0; the other particles stay random.
     """
     validate_inversion_bounds(bounds)
     if n_particles < 2 or n_iterations < 1:
@@ -456,6 +459,11 @@ def run_pso_hvsr_inversion(
     span = upper - lower
     rng = np.random.default_rng(seed)
     positions = rng.uniform(lower, upper, size=(n_particles, lower.size))
+    if initial_particle is not None:
+        start = np.asarray(initial_particle, dtype=np.float64)
+        if start.shape != lower.shape or not np.all(np.isfinite(start)):
+            raise ValueError(f"initial_particle must contain {lower.size} finite values")
+        positions[0] = np.clip(start, lower, upper)
     if require_nondecreasing_vs:
         positions = _project_nondecreasing_vs(
             positions, bounds.finite_layer_count, lower, upper
