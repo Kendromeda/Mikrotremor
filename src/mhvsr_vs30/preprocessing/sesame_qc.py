@@ -39,8 +39,13 @@ def evaluate_sesame(hvsr: Any, window_length_s: float, distribution: str) -> Ses
             std_curve=std_curve,
             verbose=0,
         )
-        reliability = bool(np.all(np.asarray(result, dtype=bool)))
-        reliability_detail = {"criteria": np.asarray(result, dtype=bool).tolist()}
+        criteria = np.asarray(result, dtype=bool)
+        reliability = bool(criteria.size == 3 and np.all(criteria))
+        reliability_detail = {
+            "criteria": criteria.tolist(),
+            "passed_count": int(np.count_nonzero(criteria)),
+            "required_count": 3,
+        }
     except Exception as error:  # SESAME needs a resolvable peak; absence is a result
         reliability_detail = {"error": f"{type(error).__name__}: {error}"}
 
@@ -52,8 +57,13 @@ def evaluate_sesame(hvsr: Any, window_length_s: float, distribution: str) -> Ses
             fn_std=float(hvsr.std_fn_frequency(distribution="normal")),
             verbose=0,
         )
-        clarity = bool(np.all(np.asarray(result, dtype=bool)))
-        clarity_detail = {"criteria": np.asarray(result, dtype=bool).tolist()}
+        criteria = np.asarray(result, dtype=bool)
+        clarity = bool(criteria.size == 6 and np.count_nonzero(criteria) >= 5)
+        clarity_detail = {
+            "criteria": criteria.tolist(),
+            "passed_count": int(np.count_nonzero(criteria)),
+            "required_count": 5,
+        }
     except Exception as error:
         clarity_detail = {"error": f"{type(error).__name__}: {error}"}
 

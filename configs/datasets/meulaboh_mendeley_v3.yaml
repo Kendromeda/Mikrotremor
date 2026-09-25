@@ -1,0 +1,41 @@
+# Appendix A in this release lists GL1-GL20 as "q-CPT & Microtremor datasets".
+# It does not publish numerical Vs30 labels; none are asserted here.
+source_id: meulaboh_mendeley_v3
+title: Raw waveform microtremor data recorded in the City of Meulaboh
+source_url: https://data.mendeley.com/datasets/vrtgv9wyc6/3
+doi: 10.17632/vrtgv9wyc6.3
+license: CC BY 4.0
+country: Indonesia
+root: datasets/source_07_meulaboh/raw/extracted
+recording:
+  format: miniseed
+  component_order: [vertical, north, east]
+  sampling_rate_hz: 100
+  units: counts
+  include: ["Raw waveform microtremor data recorded in the City of Meulaboh/*.mseed"]
+asset_rules:
+  - {pattern: "Raw waveform microtremor data recorded in the City of Meulaboh/*.mseed", media_type: ambient_noise_waveform, format_hint: miniseed}
+  - {pattern: "Raw waveform microtremor data recorded in the City of Meulaboh/Appendix A/*.pdf", media_type: site_metadata, note: "Coordinates and q-CPT/microtremor co-location scope."}
+  - {pattern: "Raw waveform microtremor data recorded in the City of Meulaboh/Appendix [B-G]/*.pdf", media_type: site_report, note: "q-CPT, derived profile, inversion, or validation appendix; not a numerical independent Vs30 table."}
+expectations: {site_count: 20, asset_count: 47, recording_count: 40, recordings_per_site: 2, require_labels: false}
+sites:
+  - {site_code: GL1, path_glob: "Raw waveform microtremor data recorded in the City of Meulaboh/GL1-*.mseed", latitude: 4.126086111, longitude: 96.12803333}
+  - {site_code: GL2, path_glob: "Raw waveform microtremor data recorded in the City of Meulaboh/GL2-*.mseed", latitude: 4.134002778, longitude: 96.12864167}
+  - {site_code: GL3, path_glob: "Raw waveform microtremor data recorded in the City of Meulaboh/GL3-*.mseed", latitude: 4.140438889, longitude: 96.13018889}
+  - {site_code: GL4, path_glob: "Raw waveform microtremor data recorded in the City of Meulaboh/GL4-*.mseed", latitude: 4.144230556, longitude: 96.13222778}
+  - {site_code: GL5, path_glob: "Raw waveform microtremor data recorded in the City of Meulaboh/GL5-*.mseed", latitude: 4.142805556, longitude: 96.12215556}
+  - {site_code: GL6, path_glob: "Raw waveform microtremor data recorded in the City of Meulaboh/GL6-*.mseed", latitude: 4.146722222, longitude: 96.13389444}
+  - {site_code: GL7, path_glob: "Raw waveform microtremor data recorded in the City of Meulaboh/GL7-*.mseed", latitude: 4.146883333, longitude: 96.11991111}
+  - {site_code: GL8, path_glob: "Raw waveform microtremor data recorded in the City of Meulaboh/GL8-*.mseed", latitude: 4.150566667, longitude: 96.13705556}
+  - {site_code: GL9, path_glob: "Raw waveform microtremor data recorded in the City of Meulaboh/GL9-*.mseed", latitude: 4.151419444, longitude: 96.13273056}
+  - {site_code: GL10, path_glob: "Raw waveform microtremor data recorded in the City of Meulaboh/GL10-*.mseed", latitude: 4.149225, longitude: 96.13511667}
+  - {site_code: GL11, path_glob: "Raw waveform microtremor data recorded in the City of Meulaboh/GL11-*.mseed", latitude: 4.15035, longitude: 96.12834722}
+  - {site_code: GL12, path_glob: "Raw waveform microtremor data recorded in the City of Meulaboh/GL12-*.mseed", latitude: 4.154872222, longitude: 96.13366389}
+  - {site_code: GL13, path_glob: "Raw waveform microtremor data recorded in the City of Meulaboh/GL13-*.mseed", latitude: 4.155680556, longitude: 96.12690556}
+  - {site_code: GL14, path_glob: "Raw waveform microtremor data recorded in the City of Meulaboh/GL14-*.mseed", latitude: 4.154941667, longitude: 96.11520833}
+  - {site_code: GL15, path_glob: "Raw waveform microtremor data recorded in the City of Meulaboh/GL15-*.mseed", latitude: 4.163455556, longitude: 96.13083056}
+  - {site_code: GL16, path_glob: "Raw waveform microtremor data recorded in the City of Meulaboh/GL16-*.mseed", latitude: 4.158241667, longitude: 96.12387778}
+  - {site_code: GL17, path_glob: "Raw waveform microtremor data recorded in the City of Meulaboh/GL17-*.mseed", latitude: 4.158858333, longitude: 96.11110278}
+  - {site_code: GL18, path_glob: "Raw waveform microtremor data recorded in the City of Meulaboh/GL18-*.mseed", latitude: 4.154508333, longitude: 96.12193611}
+  - {site_code: GL19, path_glob: "Raw waveform microtremor data recorded in the City of Meulaboh/GL19-*.mseed", latitude: 4.139133333, longitude: 96.12550278}
+  - {site_code: GL20, path_glob: "Raw waveform microtremor data recorded in the City of Meulaboh/GL20-*.mseed", latitude: 4.1742, longitude: 96.12546667}

@@ -1,0 +1,100 @@
+{
+  "site_id": "solo_pilot",
+  "coordinates_source": "user supplied in task, 2026-09-20",
+  "coordinate_unit": "m",
+  "coordinate_reference_system": "unverified",
+  "site_elevation_m": 791.66,
+  "site_elevation_source": "user supplied same value for Solo1-Solo4; contextual only for single-input mHVSR model",
+  "measured_coordinates": {
+    "Solo1": [
+      570738.0,
+      9138298.0
+    ],
+    "Solo2": [
+      570735.0,
+      9138295.0
+    ],
+    "Solo3": [
+      570739.0,
+      9138296.0
+    ],
+    "Solo4": [
+      570737.0,
+      9138299.0
+    ]
+  },
+  "exploratory_geometry": {
+    "method": "move Solo1 to centroid of Solo2, Solo3, Solo4",
+    "reason": "user authorized geometry modification; modeled layout has 3 center-outer and 3 outer-outer pairs",
+    "status": "hypothesis_not_field_measurement"
+  },
+  "geometry_used_for_spac": "triangle_hypothesis",
+  "spac_processing": {
+    "resampled_rate_hz": 200,
+    "window_seconds": 60,
+    "frequency_min_hz": 1.0,
+    "frequency_max_hz": 30.0,
+    "frequency_count": 100,
+    "log_band_half_width": 0.06,
+    "velocity_min_m_s": 80.0,
+    "velocity_max_m_s": 1500.0,
+    "velocity_grid_count": 500
+  },
+  "inversion_processing": {
+    "finite_layer_thickness_bounds_m": [
+      [
+        2.0,
+        8.0
+      ],
+      [
+        8.0,
+        20.0
+      ]
+    ],
+    "layer_vs_bounds_m_s": [
+      [
+        150.0,
+        550.0
+      ],
+      [
+        200.0,
+        850.0
+      ],
+      [
+        250.0,
+        1200.0
+      ]
+    ],
+    "poisson_ratio_assumed": 0.3,
+    "density_assumed_g_cm3": 2.0,
+    "minimum_accepted_picks": 8,
+    "preview_runs": 3,
+    "preview_maxiter": 60,
+    "preview_popsize_multiplier": 6,
+    "final_runs": 3,
+    "final_maxiter": 60,
+    "final_popsize_multiplier": 8,
+    "seeds": [
+      2026,
+      2027,
+      2028
+    ]
+  },
+  "hvsr_refinement": {
+    "random_seed": 2030,
+    "candidate_count": 128,
+    "relative_perturbation_std": 0.08,
+    "minimum_shape_correlation_gain": 0.02,
+    "maximum_dispersion_rmse_increase_m_s": 3.0,
+    "reviewed": false,
+    "depth_30m_supported": false
+  },
+  "hvsr_station": "Solo1",
+  "hvsr_station_status": "within_array_recording_not_separately_colocated_hvsr",
+  "station_elevation_m": {
+    "Solo1": 791.66,
+    "Solo2": 791.66,
+    "Solo3": 791.66,
+    "Solo4": 791.66
+  }
+}

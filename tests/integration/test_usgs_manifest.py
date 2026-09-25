@@ -24,6 +24,11 @@ EXPECTED_VS30 = {
     "usgs_arra_2013:CI.CCC": 432.0,
     "usgs_arra_2013:CI.CLC": 1464.0,
 }
+EXPECTED_COORDINATES = {
+    "usgs_arra_2013:CI.DRE": (32.805346, -115.446768),
+    "usgs_arra_2013:CI.CCC": (35.524747, -117.364592),
+    "usgs_arra_2013:CI.CLC": (35.8157445, -117.5975175),
+}
 CACHE = Path("artifacts/cache/checksums.json")
 
 
@@ -40,6 +45,13 @@ def usgs_manifest() -> Manifest:
 
 def test_build_usgs_manifest_finds_three_sites(usgs_manifest: Manifest) -> None:
     assert sorted(site.site_id for site in usgs_manifest.sites) == EXPECTED_SITES
+
+
+def test_sites_use_the_release_location_spreadsheet_coordinates(usgs_manifest: Manifest) -> None:
+    assert {
+        site.site_id: (site.latitude, site.longitude) for site in usgs_manifest.sites
+    } == EXPECTED_COORDINATES
+    assert {site.location_accuracy_m for site in usgs_manifest.sites} == {2.0}
 
 
 def test_build_usgs_manifest_finds_18_recordings(usgs_manifest: Manifest) -> None:

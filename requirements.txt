@@ -1,8 +1,17 @@
+# Legacy notebook dependencies only.
+#
+# The reproducible mhvsr_vs30 data-pipeline package is installed with
+# `uv sync` from pyproject.toml and uv.lock, not from this file.
+# See README.md for the two installation workflows.
 matplotlib
 numpy
 obspy
 tensorflow
 jupyterlab
-hvsrpy
+# Keep the notebooks on the same hvsrpy compatibility profile as the published
+# reference workflow. hvsrpy imports this optional GUI dependency at import
+# time; 5.15.2 is the last PyQt5 Qt patch with the needed Windows wheel.
+hvsrpy==2.0.0
+pyqt5-qt5==5.15.2
 scikit-learn
 xgboost

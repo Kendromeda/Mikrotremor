@@ -7,7 +7,9 @@ from pathlib import Path
 
 import pytest
 
+import mhvsr_vs30.cli as cli
 from mhvsr_vs30.cli import main
+from mhvsr_vs30.training.dataset import DatasetSnapshot
 
 
 def run(capsys: pytest.CaptureFixture[str], *argv: str) -> tuple[int, dict]:
@@ -220,3 +222,84 @@ def test_recording_validate_all_reports_a_broken_file(
     assert code == 1
     assert payload["status"] == "failed"
     assert payload["failed"][0]["error_type"] == "MalformedAsciiError"
+
+
+def test_train_evaluate_combines_snapshots_for_a_grouped_split(
+    capsys: pytest.CaptureFixture[str], monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    snapshot = DatasetSnapshot.__new__(DatasetSnapshot)
+    loaded: list[Path] = []
+    captured: dict[str, object] = {}
+
+    def fake_read(directory: Path) -> DatasetSnapshot:
+        loaded.append(directory)
+        return snapshot
+
+    def fake_combine(snapshots: list[DatasetSnapshot]) -> DatasetSnapshot:
+        captured["combined"] = snapshots
+        return snapshot
+
+    def fake_evaluate(
+        dataset: DatasetSnapshot, output: Path, *, split: str, ridge_alpha: float
+    ) -> dict:
+        captured.update(dataset=dataset, output=output, split=split, alpha=ridge_alpha)
+        return {"split": "leave_one_study_out", "site_leakage_detected": []}
+
+    monkeypatch.setattr(cli, "read_dataset_snapshot", fake_read)
+    monkeypatch.setattr(cli, "combine_snapshots", fake_combine)
+    monkeypatch.setattr(cli, "run_grouped_evaluation", fake_evaluate)
+
+    code, payload = run(
+        capsys,
+        "train",
+        "evaluate",
+        "--dataset",
+        str(tmp_path / "us"),
+        "--dataset",
+        str(tmp_path / "id"),
+        "--split",
+        "study",
+        "--output",
+        str(tmp_path / "run"),
+        "--alpha",
+        "0.5",
+    )
+
+    assert code == 0
+    assert loaded == [tmp_path / "us", tmp_path / "id"]
+    assert captured["split"] == "study"
+    assert captured["alpha"] == 0.5
+    assert payload["split"] == "leave_one_study_out"
+
+
+def test_train_evaluate_runs_an_external_country_holdout(
+    capsys: pytest.CaptureFixture[str], monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    snapshot = DatasetSnapshot.__new__(DatasetSnapshot)
+    captured: dict[str, object] = {}
+
+    monkeypatch.setattr(cli, "read_dataset_snapshot", lambda _: snapshot)
+
+    def fake_external(
+        dataset: DatasetSnapshot, output: Path, *, country: str, ridge_alpha: float
+    ) -> dict:
+        captured.update(dataset=dataset, output=output, country=country, alpha=ridge_alpha)
+        return {"split": "external_country_holdout", "site_leakage_detected": []}
+
+    monkeypatch.setattr(cli, "run_external_holdout", fake_external)
+
+    code, payload = run(
+        capsys,
+        "train",
+        "evaluate",
+        "--dataset",
+        str(tmp_path / "combined"),
+        "--external-country",
+        "Indonesia",
+        "--output",
+        str(tmp_path / "run"),
+    )
+
+    assert code == 0
+    assert captured["country"] == "Indonesia"
+    assert payload["split"] == "external_country_holdout"

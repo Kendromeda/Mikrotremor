@@ -9,6 +9,8 @@ from __future__ import annotations
 
 import json
 from collections import Counter
+from collections.abc import Sequence
+from copy import deepcopy
 from pathlib import Path
 from typing import Any
 
@@ -22,7 +24,7 @@ from mhvsr_vs30.preprocessing.config import PreprocessingProfile
 from mhvsr_vs30.preprocessing.store import curve_directory, read_curve_arrays
 from mhvsr_vs30.provenance import environment_provenance
 
-__all__ = ["DatasetSnapshot", "build_dataset"]
+__all__ = ["DatasetSnapshot", "build_dataset", "combine_snapshots", "read_dataset_snapshot"]
 
 FEATURE_COLUMNS = feature_columns()
 
@@ -64,6 +66,148 @@ class DatasetSnapshot:
         return target
 
 
+def read_dataset_snapshot(directory: Path | str) -> DatasetSnapshot:
+    """Load a snapshot written by :meth:`DatasetSnapshot.write` for evaluation."""
+    source = Path(directory)
+    parquet_path = source / "dataset.parquet"
+    metadata_path = source / "dataset.json"
+    if not parquet_path.is_file() or not metadata_path.is_file():
+        raise DatasetError(f"snapshot directory needs dataset.parquet and dataset.json: {source}")
+    try:
+        metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise DatasetError(f"invalid snapshot metadata JSON: {metadata_path}") from exc
+    if not isinstance(metadata, dict):
+        raise DatasetError(f"snapshot metadata must be a JSON object: {metadata_path}")
+    return DatasetSnapshot(pd.read_parquet(parquet_path), metadata)
+
+
+def combine_snapshots(
+    snapshots: Sequence[DatasetSnapshot], *, site_crosswalk: dict[str, str] | None = None
+) -> DatasetSnapshot:
+    """Combine independently built snapshots for cross-study evaluation.
+
+    Inputs must use the same non-empty preprocessing profile. Recording
+    identifiers stay globally unique. Cross-source inputs need either an
+    explicit ``canonical_site_id`` column or a ``source_id::site_id`` crosswalk;
+    proximity is deliberately never used to merge physical sites.
+    """
+    if len(snapshots) < 2:
+        raise DatasetError("combine_snapshots needs at least 2 snapshots")
+
+    frames: list[pd.DataFrame] = []
+    input_metadata: list[dict[str, Any]] = []
+    profile_keys: set[str] = set()
+    input_source_ids: set[str] = set()
+    for index, snapshot in enumerate(snapshots):
+        _validate_snapshot_for_combination(snapshot, index)
+        profile = snapshot.metadata.get("profile_identity")
+        if profile is None or profile == "" or profile == {}:
+            raise DatasetError(f"snapshot {index} lacks non-empty profile_identity provenance")
+        profile_keys.add(json.dumps(profile, sort_keys=True))
+        frames.append(snapshot.frame.copy(deep=True))
+        input_metadata.append(deepcopy(snapshot.metadata))
+        input_source_ids.add(str(snapshot.metadata["source_id"]))
+
+    if len(profile_keys) > 1:
+        raise DatasetError("cannot combine snapshots made with different preprocessing profiles")
+
+    frame = pd.concat(frames, ignore_index=True)
+    _apply_canonical_site_ids(frame, site_crosswalk, require_canonical=len(input_source_ids) > 1)
+    duplicate_recordings = sorted(
+        frame.loc[frame["recording_id"].duplicated(keep=False), "recording_id"].unique().tolist()
+    )
+    if duplicate_recordings:
+        raise DatasetError(
+            f"duplicate recording_id values across snapshots: {duplicate_recordings}"
+        )
+    _validate_site_consistency(frame)
+
+    frame = frame.sort_values("recording_id").reset_index(drop=True)
+    per_site = frame["site_id"].value_counts()
+    frame["sample_weight"] = frame["site_id"].map(lambda site: 1.0 / float(per_site[site]))
+
+    source_ids = sorted({str(metadata["source_id"]) for metadata in input_metadata})
+    metadata: dict[str, Any] = {
+        "source_id": "combined",
+        "source_ids": source_ids,
+        "input_snapshots": input_metadata,
+        "profile_identity": deepcopy(snapshots[0].metadata.get("profile_identity")),
+        "row_count": len(frame),
+        "site_count": int(frame["site_id"].nunique()),
+        "recordings_per_site": {
+            site: int(count) for site, count in frame["site_id"].value_counts().sort_index().items()
+        },
+        "vs30_by_site": {
+            site: float(value)
+            for site, value in frame.groupby("site_id")["vs30_mps"].first().sort_index().items()
+        },
+        "label_independence": {
+            key: int(value) for key, value in frame["label_independence"].value_counts().items()
+        },
+        "feature_count": FEATURE_COUNT,
+    }
+    metadata.update(environment_provenance())
+    return DatasetSnapshot(frame, metadata)
+
+
+def _validate_snapshot_for_combination(snapshot: DatasetSnapshot, index: int) -> None:
+    required = {"recording_id", "site_id", "vs30_mps", "label_independence"} | set(FEATURE_COLUMNS)
+    missing = sorted(required - set(snapshot.frame.columns))
+    if missing:
+        raise DatasetError(f"snapshot {index} lacks required columns: {missing}")
+    source_id = snapshot.metadata.get("source_id")
+    if not isinstance(source_id, str) or not source_id.strip():
+        raise DatasetError(f"snapshot {index} lacks source_id provenance")
+
+
+def _validate_site_consistency(frame: pd.DataFrame) -> None:
+    """Refuse contradictory labels or grouping metadata for one physical site."""
+    invariant_columns = (
+        "country",
+        "geography_id",
+        "vs30_mps",
+        "label_independence",
+    )
+    present = [column for column in invariant_columns if column in frame.columns]
+    conflicts: dict[str, list[str]] = {}
+    for site_id, group in frame.groupby("site_id", sort=True):
+        inconsistent = [column for column in present if group[column].nunique(dropna=False) != 1]
+        if inconsistent:
+            conflicts[str(site_id)] = inconsistent
+    if conflicts:
+        raise DatasetError(f"conflicting metadata for physical sites: {conflicts}")
+
+
+def _apply_canonical_site_ids(
+    frame: pd.DataFrame,
+    site_crosswalk: dict[str, str] | None,
+    *,
+    require_canonical: bool,
+) -> None:
+    """Apply an audited site crosswalk before any physical-site validation."""
+    has_canonical = "canonical_site_id" in frame.columns
+    if require_canonical and not has_canonical and site_crosswalk is None:
+        raise DatasetError(
+            "cross-source combination requires canonical_site_id metadata "
+            "or an explicit site_crosswalk"
+        )
+    if site_crosswalk is not None:
+        source_sites = frame["source_id"].astype(str) + "::" + frame["site_id"].astype(str)
+        mapped = source_sites.map(site_crosswalk)
+        if mapped.isna().any() or any(not str(value).strip() for value in mapped):
+            missing = sorted(source_sites[mapped.isna()].unique().tolist())
+            raise DatasetError(f"site_crosswalk has no canonical site for: {missing}")
+        frame["canonical_site_id"] = mapped.astype(str)
+        has_canonical = True
+    if has_canonical:
+        canonical = frame["canonical_site_id"]
+        if canonical.isna().any() or any(not str(value).strip() for value in canonical):
+            raise DatasetError("canonical_site_id must be present and non-empty for every row")
+        frame["source_site_id"] = frame["site_id"].astype(str)
+        frame["site_id"] = canonical.astype(str)
+
+
 def build_dataset(
     manifest: Manifest,
     profile: PreprocessingProfile,
@@ -79,6 +223,7 @@ def build_dataset(
     """
     labels_by_site = {label.site_id: label for label in manifest.labels}
     recordings = {r.recording_id: r for r in manifest.recordings}
+    sites_by_id = {site.site_id: site for site in manifest.sites}
 
     rows: list[dict[str, Any]] = []
     skipped: Counter[str] = Counter()
@@ -92,6 +237,10 @@ def build_dataset(
         label = labels_by_site.get(recording.site_id)
         if label is None:
             skipped["no_label"] += 1
+            continue
+        site = sites_by_id.get(recording.site_id)
+        if site is None:
+            skipped["no_site_metadata"] += 1
             continue
         independence = str(label.label_independence)
         if require_independent_labels and independence != "independent_of_hvsr":
@@ -114,6 +263,13 @@ def build_dataset(
             "recording_id": recording_id,
             "site_id": recording.site_id,
             "source_id": manifest.source.source_id,
+            # A source is the smallest cited study unit available in the
+            # manifest. More granular studies can replace this column when
+            # combining snapshots, but a source must never be split across
+            # train/test merely because it contains multiple recordings.
+            "study_id": f"source:{manifest.source.source_id}",
+            "country": str(site.country),
+            "geography_id": f"country:{site.country}",
             "label_id": label.label_id,
             "vs30_mps": label.vs30_mps,
             "label_method": label.label_method,

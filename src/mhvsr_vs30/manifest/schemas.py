@@ -165,6 +165,9 @@ class Expectations(_Config):
     asset_count: int | None = Field(default=None, ge=0)
     recording_count: int | None = Field(default=None, ge=0)
     recordings_per_site: int | None = Field(default=None, ge=0)
+    # Label curation can lag waveform curation. Keep the historical strict
+    # behaviour unless a source explicitly declares itself QC/pretraining-only.
+    require_labels: bool = True
 
 
 class SourceConfig(_Config):

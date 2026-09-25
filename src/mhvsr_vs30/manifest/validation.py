@@ -102,7 +102,7 @@ def _check_physical_plausibility(manifest: Manifest, config: SourceConfig) -> li
     return failures
 
 
-def _check_coverage(manifest: Manifest) -> list[str]:
+def _check_coverage(manifest: Manifest, config: SourceConfig) -> list[str]:
     """Every configured site must actually be represented in the tree."""
     failures: list[str] = []
     per_site = Counter(recording.site_id for recording in manifest.recordings)
@@ -111,7 +111,7 @@ def _check_coverage(manifest: Manifest) -> list[str]:
     for site in manifest.sites:
         if per_site.get(site.site_id, 0) == 0:
             failures.append(f"site {site.site_id} has no recordings under the source root")
-        if site.site_id not in labelled:
+        if config.expectations.require_labels and site.site_id not in labelled:
             failures.append(f"site {site.site_id} has no Vs30 label")
     return failures
 
@@ -154,6 +154,6 @@ def validate_manifest(manifest: Manifest, config: SourceConfig) -> list[str]:
         *_check_references(manifest),
         *_check_source_consistency(manifest),
         *_check_physical_plausibility(manifest, config),
-        *_check_coverage(manifest),
+        *_check_coverage(manifest, config),
         *_check_expectations(manifest, config),
     ]

@@ -1,8 +1,8 @@
 # Data pipeline: manifests and canonical readers
 
 This document covers the `mhvsr_vs30` package under `src/`, which builds
-recording-level manifests from published datasets and parses their raw files
-into one in-memory representation. It does no preprocessing and no training.
+recording-level manifests from published datasets, parses raw files,
+preprocesses mHVSR curves, and evaluates small baseline models.
 
 The notebooks (`low_dim_models.ipynb`, `high_dim_models.ipynb`) remain the
 reference for inference and do not depend on this package.
@@ -171,6 +171,28 @@ Every report is stamped `evaluation_scope: engineering_only`,
 numbers are not a scientific result. That stamp is the point of the command: it
 proves the pipeline runs without a notebook and does not leak a site across the
 split, and it proves nothing else.
+
+## Medan table-only evaluation
+
+The Medan supplement supplies 185 audited site-ID matches between published
+HVSR `f0`/`A0` values and MASW Vs30 values. It does not supply the raw
+three-component recordings needed by the 35-point curve pipeline, so its
+evaluation is deliberately separate:
+
+```bash
+uv run mhvsr-vs30 tabular evaluate-medan --report artifacts/reports/medan_supplement_v1__spatial_tabular.json
+```
+
+The evaluator holds out five equal-sized longitude bands (37 sites each) and
+removes training sites within a 1 km longitude buffer around each held-out band.
+Within each fold it fits a median-Vs30 baseline and a ridge regression using
+only log `f0` and log `A0`; the output lists the train/test sites, longitude
+ranges, buffer exclusions, and errors. All 185 sites come from one study, so
+the report is stamped
+`exploratory_single_study`, `external_validation: false`, and
+`promotion_eligible: false`. It cannot establish performance in another study
+or country. The curated source tables and join rules are described in
+`datasets/processed/medan_supplement_v1/CURATION.md`.
 
 ## Adding a source
 

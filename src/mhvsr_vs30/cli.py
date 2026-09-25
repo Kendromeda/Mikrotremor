@@ -30,8 +30,21 @@ from mhvsr_vs30.manifest.validation import validate_manifest
 from mhvsr_vs30.preprocessing.batch import run_profile, write_report
 from mhvsr_vs30.preprocessing.compare import compare_profiles
 from mhvsr_vs30.preprocessing.config import load_profile
-from mhvsr_vs30.training.dataset import build_dataset
-from mhvsr_vs30.training.evaluate import run_leave_one_site_out
+from mhvsr_vs30.training.dataset import (
+    build_dataset,
+    combine_snapshots,
+    read_dataset_snapshot,
+)
+from mhvsr_vs30.training.evaluate import (
+    run_external_holdout,
+    run_grouped_evaluation,
+    run_leave_one_site_out,
+)
+from mhvsr_vs30.training.medan_tabular import (
+    evaluate_medan,
+    load_medan_pairs,
+    write_medan_report,
+)
 
 __all__ = ["main"]
 
@@ -197,6 +210,41 @@ def _cmd_train_smoke(args: argparse.Namespace) -> int:
     return 1 if report["site_leakage_detected"] else 0
 
 
+def _cmd_train_evaluate(args: argparse.Namespace) -> int:
+    """Evaluate one snapshot or a compatible collection under a strict split."""
+    snapshots = [read_dataset_snapshot(directory) for directory in args.dataset]
+    dataset = combine_snapshots(snapshots) if len(snapshots) > 1 else snapshots[0]
+
+    if args.external_country is not None:
+        report = run_external_holdout(
+            dataset,
+            args.output,
+            country=args.external_country,
+            ridge_alpha=args.alpha,
+        )
+    else:
+        report = run_grouped_evaluation(
+            dataset,
+            args.output,
+            split=args.split,
+            ridge_alpha=args.alpha,
+        )
+    _emit({key: value for key, value in report.items() if key not in ("models", "environment")})
+    return 1 if report["site_leakage_detected"] else 0
+
+
+def _cmd_tabular_evaluate_medan(args: argparse.Namespace) -> int:
+    pairs = load_medan_pairs(args.data)
+    report = evaluate_medan(pairs, n_regions=args.regions, buffer_km=args.buffer_km)
+    provenance_path = args.data / "source_provenance.json"
+    if provenance_path.is_file():
+        provenance = json.loads(provenance_path.read_text(encoding="utf-8"))
+        report["source_sha256"] = provenance.get("source_sha256")
+    write_medan_report(report, args.report)
+    _emit({key: value for key, value in report.items() if key != "folds"})
+    return 1 if report["site_leakage_detected"] else 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="mhvsr-vs30", description=__doc__)
     parser.add_argument("--version", action="version", version=__version__)
@@ -286,6 +334,40 @@ def build_parser() -> argparse.ArgumentParser:
     smoke.add_argument("--alpha", default=1.0, type=float)
     smoke.add_argument("--report", default=None, type=Path)
     smoke.set_defaults(handler=_cmd_train_smoke)
+
+    evaluate = train_actions.add_parser(
+        "evaluate", help="evaluate one or more snapshots with leakage-safe grouped splits"
+    )
+    evaluate.add_argument(
+        "--dataset",
+        required=True,
+        action="append",
+        type=Path,
+        help="snapshot directory; repeat to combine compatible studies",
+    )
+    evaluation_mode = evaluate.add_mutually_exclusive_group()
+    evaluation_mode.add_argument(
+        "--split", choices=("site", "study", "geography"), default="site"
+    )
+    evaluation_mode.add_argument(
+        "--external-country",
+        default=None,
+        help="hold out every site in this country for external evaluation",
+    )
+    evaluate.add_argument("--output", required=True, type=Path)
+    evaluate.add_argument("--alpha", default=1.0, type=float)
+    evaluate.set_defaults(handler=_cmd_train_evaluate)
+
+    tabular = subcommands.add_parser("tabular", help="evaluate audited published tables")
+    tabular_actions = tabular.add_subparsers(dest="action", required=True)
+    medan = tabular_actions.add_parser(
+        "evaluate-medan", help="spatial within-study evaluation of Medan HVSR/MASW pairs"
+    )
+    medan.add_argument("--data", type=Path, default=Path("datasets/processed/medan_supplement_v1"))
+    medan.add_argument("--regions", type=int, default=5)
+    medan.add_argument("--buffer-km", type=float, default=1.0)
+    medan.add_argument("--report", type=Path, required=True)
+    medan.set_defaults(handler=_cmd_tabular_evaluate_medan)
 
     return parser
 

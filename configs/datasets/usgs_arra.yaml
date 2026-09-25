@@ -76,9 +76,12 @@ expectations:
   recordings_per_site: 6
 
 sites:
-  # Coordinates are intentionally absent: the CI-*.xls location spreadsheets in
-  # each archive have not been transcribed and verified yet.
   - site_code: CI.DRE
+    # CI-DRE Locations.xls, Sheet1, row "CI.DRE Seismic Station".  The sheet
+    # identifies WGS84 decimal degrees and 1--2 m survey accuracy.
+    latitude: 32.805346
+    longitude: -115.446768
+    location_accuracy_m: 2
     label:
       vs30_mps: 196
       label_method: surface_wave_multi_technique
@@ -87,6 +90,10 @@ sites:
       reference_locator: Table 3
 
   - site_code: CI.CCC
+    # CI-CCC Locations.xls, row "CI.CCC Seismic Sensor".
+    latitude: 35.524747
+    longitude: -117.364592
+    location_accuracy_m: 2
     label:
       vs30_mps: 432
       label_method: surface_wave_multi_technique
@@ -95,6 +102,10 @@ sites:
       reference_locator: Table 3
 
   - site_code: CI.CLC
+    # CI-CLC Locations.xlsx, Sheet1, row "CI.CLC Seismic Station".
+    latitude: 35.8157445
+    longitude: -117.5975175
+    location_accuracy_m: 2
     label:
       vs30_mps: 1464
       label_method: surface_wave_multi_technique

@@ -1,0 +1,93 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      run_real_data_tests:
+        description: >-
+          Run tests marked requires_real_data on a pre-provisioned self-hosted
+          Linux runner. The runner checkout must already contain datasets_global/**/raw.
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+jobs:
+  quality-and-build:
+    name: Quality, quick tests, and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      - name: Install locked dependencies
+        run: uv sync --locked
+
+      - name: Lint
+        run: uv run ruff check src tests
+
+      - name: Type check
+        run: uv run mypy src/mhvsr_vs30
+
+      - name: Run tests without external datasets
+        run: >-
+          uv run pytest -m "not requires_real_data"
+          --cov=mhvsr_vs30 --cov-report=term-missing --cov-fail-under=80
+
+      - name: Build distributions
+        run: uv build
+
+  real-data-tests:
+    # Raw datasets are intentionally excluded from Git. This job is deliberately
+    # manual and uses a dedicated runner where an operator has provisioned them.
+    if: >-
+      github.event_name == 'workflow_dispatch' &&
+      inputs.run_real_data_tests == true
+    name: Real-data tests (manual)
+    runs-on: [self-hosted, linux, x64]
+    timeout-minutes: 45
+    steps:
+      - name: Check out source without deleting provisioned raw data
+        uses: actions/checkout@v4
+        with:
+          clean: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      - name: Verify that the required dataset is provisioned
+        run: >-
+          test -d datasets_global/source_05_usgs_arra_2013/raw/extracted
+          || { echo "Real data is not provisioned on this runner; no data is downloaded by CI."; exit 1; }
+
+      - name: Install locked dependencies
+        run: uv sync --locked
+
+      - name: Run real-data tests
+        run: uv run pytest -m requires_real_data

@@ -1,0 +1,87 @@
+# Kaligarang Fault microtremor release.
+# Coordinates are transcribed from the bundled Coordinat.xlsx Sheet1.  The
+# `.model` profiles are documented release outputs from HVSR inversion, so they
+# are tracked as derived profiles and never asserted as independent Vs30 labels.
+
+source_id: kaligarang_semarang_mendeley_v1
+title: Kaligarang Fault Semarang microtremor data
+source_url: https://data.mendeley.com/datasets/3y496txbc6/1
+doi: 10.17632/3y496txbc6.1
+license: CC BY 4.0
+country: Indonesia
+root: datasets/source_06_kaligarang_semarang/raw/extracted
+
+recording:
+  format: ascii_3c
+  component_order: [vertical, north, east]
+  # No sampling rate is documented in the bundled coordinate workbook or raw
+  # text files; it remains unset rather than inferred from a filename.
+  sampling_rate_hz: null
+  units: null
+  include:
+    - "Microtremor Data/Raw Data Microtremor/*.txt"
+
+asset_rules:
+  - pattern: "Microtremor Data/Raw Data Microtremor/*.txt"
+    media_type: ambient_noise_waveform
+    format_hint: ascii_3c
+  - pattern: "Microtremor Data/HV curve/*.hv"
+    media_type: processed_hvsr_curve
+    note: Geopsy H/V result; not a raw waveform.
+  - pattern: "Microtremor Data/HV curve/*.log"
+    media_type: site_metadata
+  - pattern: "Microtremor Data/Inversion Model/*.model"
+    media_type: vs_profile
+    note: HVSR inversion output; derived, not an independent label.
+  - pattern: "Microtremor Data/Coordinat.xlsx"
+    media_type: site_metadata
+
+expectations:
+  site_count: 41
+  asset_count: 185
+  recording_count: 41
+  recordings_per_site: 1
+  require_labels: false
+
+sites:
+  - {site_code: A1, path_glob: "Microtremor Data/Raw Data Microtremor/A1.txt", latitude: -7.10535240965177, longitude: 110.409901431895, elevation_m: 358}
+  - {site_code: A2, path_glob: "Microtremor Data/Raw Data Microtremor/A2.txt", latitude: -7.106060749315853, longitude: 110.40755292225406, elevation_m: 340}
+  - {site_code: A3, path_glob: "Microtremor Data/Raw Data Microtremor/A3.txt", latitude: -7.107713155350696, longitude: 110.40542025034296, elevation_m: 331}
+  - {site_code: A4, path_glob: "Microtremor Data/Raw Data Microtremor/A4.txt", latitude: -7.109090938847585, longitude: 110.40245155874703, elevation_m: 301}
+  - {site_code: A5, path_glob: "Microtremor Data/Raw Data Microtremor/A5.txt", latitude: -7.109540349794352, longitude: 110.40079609770113, elevation_m: 302}
+  - {site_code: A6, path_glob: "Microtremor Data/Raw Data Microtremor/A6.txt", latitude: -7.110242162059425, longitude: 110.3984044606895, elevation_m: 321}
+  - {site_code: A7, path_glob: "Microtremor Data/Raw Data Microtremor/A7.txt", latitude: -7.11052660259193, longitude: 110.39635792221735, elevation_m: 320}
+  - {site_code: B1, path_glob: "Microtremor Data/Raw Data Microtremor/B1.txt", latitude: -7.065625822361873, longitude: 110.41162044267934, elevation_m: 233}
+  - {site_code: B2, path_glob: "Microtremor Data/Raw Data Microtremor/B2.txt", latitude: -7.066012450588507, longitude: 110.40977933525569, elevation_m: 237}
+  - {site_code: B3, path_glob: "Microtremor Data/Raw Data Microtremor/B3.txt", latitude: -7.065482640111811, longitude: 110.40762592183167, elevation_m: 192}
+  - {site_code: B4, path_glob: "Microtremor Data/Raw Data Microtremor/B4.txt", latitude: -7.0668738852466975, longitude: 110.40447224198238, elevation_m: 214}
+  - {site_code: B5, path_glob: "Microtremor Data/Raw Data Microtremor/B5.txt", latitude: -7.067819190460216, longitude: 110.40042243994932, elevation_m: 238}
+  - {site_code: B6, path_glob: "Microtremor Data/Raw Data Microtremor/B6.txt", latitude: -7.068016181396908, longitude: 110.39830186612058, elevation_m: 237}
+  - {site_code: C1, path_glob: "Microtremor Data/Raw Data Microtremor/C1.txt", latitude: -7.06213511155138, longitude: 110.41307883104983, elevation_m: 222}
+  - {site_code: C2, path_glob: "Microtremor Data/Raw Data Microtremor/C2.txt", latitude: -7.061031692500338, longitude: 110.40981118482536, elevation_m: 235}
+  - {site_code: C3, path_glob: "Microtremor Data/Raw Data Microtremor/C3.txt", latitude: -7.060323397747132, longitude: 110.40707301093683, elevation_m: 202}
+  - {site_code: C4, path_glob: "Microtremor Data/Raw Data Microtremor/C4.txt", latitude: -7.0593351765838825, longitude: 110.40288459024724, elevation_m: 202}
+  - {site_code: C5, path_glob: "Microtremor Data/Raw Data Microtremor/C5.txt", latitude: -7.058164103986073, longitude: 110.40066015042315, elevation_m: 219}
+  - {site_code: C6, path_glob: "Microtremor Data/Raw Data Microtremor/C6.txt", latitude: -7.057185631045807, longitude: 110.39803925293874, elevation_m: 222}
+  - {site_code: D1, path_glob: "Microtremor Data/Raw Data Microtremor/D1.txt", latitude: -7.0516073349011235, longitude: 110.41646066406906, elevation_m: 235}
+  - {site_code: D2, path_glob: "Microtremor Data/Raw Data Microtremor/D2.txt", latitude: -7.049971763786573, longitude: 110.41316522829959, elevation_m: 225}
+  - {site_code: D3, path_glob: "Microtremor Data/Raw Data Microtremor/D3.txt", latitude: -7.049858, longitude: 110.40989723197822, elevation_m: 214}
+  - {site_code: D4, path_glob: "Microtremor Data/Raw Data Microtremor/D4.txt", latitude: -7.048815587339816, longitude: 110.40594763012524, elevation_m: 83}
+  - {site_code: D5, path_glob: "Microtremor Data/Raw Data Microtremor/D5.txt", latitude: -7.047640095463904, longitude: 110.40286933075998, elevation_m: 108}
+  - {site_code: D6, path_glob: "Microtremor Data/Raw Data Microtremor/D6.txt", latitude: -7.046354320924723, longitude: 110.39817320531752, elevation_m: 190}
+  - {site_code: E1, path_glob: "Microtremor Data/Raw Data Microtremor/E1.txt", latitude: -7.030782193638318, longitude: 110.40854187734281, elevation_m: 97}
+  - {site_code: E2, path_glob: "Microtremor Data/Raw Data Microtremor/E2.txt", latitude: -7.0319423974551425, longitude: 110.40677751894219, elevation_m: 57}
+  - {site_code: E3, path_glob: "Microtremor Data/Raw Data Microtremor/E3.txt", latitude: -7.032849130586057, longitude: 110.40479246791418, elevation_m: 46}
+  - {site_code: E4, path_glob: "Microtremor Data/Raw Data Microtremor/E4.txt", latitude: -7.034507873765887, longitude: 110.40257792665894, elevation_m: 54}
+  - {site_code: E5, path_glob: "Microtremor Data/Raw Data Microtremor/E5.txt", latitude: -7.035689456512086, longitude: 110.4006458331238, elevation_m: 80}
+  - {site_code: E6, path_glob: "Microtremor Data/Raw Data Microtremor/E6.txt", latitude: -7.037104485297285, longitude: 110.39821437242978, elevation_m: 114}
+  - {site_code: E7, path_glob: "Microtremor Data/Raw Data Microtremor/E7.txt", latitude: -7.04028360775422, longitude: 110.39178179494411, elevation_m: 203}
+  - {site_code: F1, path_glob: "Microtremor Data/Raw Data Microtremor/F1.txt", latitude: -7.017546275392761, longitude: 110.39933538038406, elevation_m: 67}
+  - {site_code: F2, path_glob: "Microtremor Data/Raw Data Microtremor/F2.txt", latitude: -7.020275837286929, longitude: 110.39785368428456, elevation_m: 37}
+  - {site_code: F3, path_glob: "Microtremor Data/Raw Data Microtremor/F3.txt", latitude: -7.021774941341718, longitude: 110.39616369116904, elevation_m: 24}
+  - {site_code: F4, path_glob: "Microtremor Data/Raw Data Microtremor/F4.txt", latitude: -7.022655470434808, longitude: 110.39500413062166, elevation_m: 33}
+  - {site_code: F5, path_glob: "Microtremor Data/Raw Data Microtremor/F5.txt", latitude: -7.024519575046928, longitude: 110.39291654883648, elevation_m: 57}
+  - {site_code: F6, path_glob: "Microtremor Data/Raw Data Microtremor/F6.txt", latitude: -7.027217432559801, longitude: 110.39009776573397, elevation_m: 72}
+  - {site_code: G1, path_glob: "Microtremor Data/Raw Data Microtremor/G1.txt", latitude: -7.035191515780473, longitude: 110.40876617970885, elevation_m: 86}
+  - {site_code: G2, path_glob: "Microtremor Data/Raw Data Microtremor/G2.txt", latitude: -7.03750126792058, longitude: 110.406113592874, elevation_m: 57}
+  - {site_code: G3, path_glob: "Microtremor Data/Raw Data Microtremor/G3.txt", latitude: -7.041847485688028, longitude: 110.39977290177417, elevation_m: 131}

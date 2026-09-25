@@ -26,30 +26,65 @@ following:
 
 ## Getting Started
 
-### Installing _mHVSR-Vs30_
+This repository has two supported workflows. Use the **pipeline package** for
+data curation, quality control, preprocessing, and reproducible training. Use
+the **legacy notebooks** only to explore the published prediction examples.
+They have separate dependency files and should be installed separately.
 
-1.  If you do not have Python 3.12 or later installed, you will need to do
-so. A detailed set of instructions can be found
-[here](https://jpvantassel.github.io/python3-course/#/intro/installing_python).
+### Pipeline package (recommended)
 
-2. MacOS users, note that you may need to install `libomp` before continuing.
-You can do this using `brew` with the command `brew install libomp` or through `conda`
-with the command `conda install -c conda-forge libomp`. 
+The pipeline requires Python 3.12 or later and is locked with
+[uv](https://docs.astral.sh/uv/). From the repository root:
 
-3. Download a copy of the repository to your local machine. This can be done by
-downloading a .zip file or by cloning the repository. If you download a .zip you
-will need to be sure that you continue using the unzipped version to prevent issues.
+```bash
+uv sync
+```
 
-4.  Install the Python dependencies using `pip` via the command `python -m pip install -r requirements.txt`.
-If you are not familiar with `pip`, a useful tutorial can be found
-[here](https://jpvantassel.github.io/python3-course/#/intro/pip).
+This creates or updates the project virtual environment from `pyproject.toml`
+and the committed `uv.lock`; it also installs the development tools used below.
+Do not install the package workflow from `requirements.txt`.
 
-5.  Confirm that the dependencies have installed/updated successfully by examining the
-last few lines of the text displayed in the console.
+Run the fast local verification suite with:
+
+```bash
+uv run ruff check src tests
+uv run mypy src/mhvsr_vs30
+uv run pytest -m "not requires_real_data"
+```
+
+Run the complete suite, including tests that require the local
+`datasets_global/` tree when that data is available:
+
+```bash
+uv run pytest --cov=mhvsr_vs30 --cov-report=term-missing
+uv build
+```
+
+For the end-to-end pipeline commands, see
+[the data-pipeline guide](docs/DATA_PIPELINE.md). The package command is
+available as `uv run mhvsr-vs30`.
+
+### Legacy notebooks
+
+The notebooks, `low_dim_models.ipynb` and `high_dim_models.ipynb`, are an
+independent, no-code introduction to the published prediction models. They do
+not use the `mhvsr_vs30` package pipeline.
+
+They require Python 3.12 or later. Install their notebook-specific dependencies
+with `pip`:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+`requirements.txt` is retained exclusively for this legacy notebook workflow;
+it is intentionally not a replacement for the locked package environment.
+MacOS users may also need `libomp` (`brew install libomp` or
+`conda install -c conda-forge libomp`) for some notebook dependencies.
 
 ### Using _mHVSR-Vs30_
 
-1.  Launch the provided Jupyter notebooks, `low_dim_models.ipynb` or `high_dim_models.ipynb` (recommended),
+1.  After installing the legacy notebook dependencies, launch `low_dim_models.ipynb` or `high_dim_models.ipynb` (recommended),
   for a no-coding-required introduction to prediction models. If you have not installed `Jupyter Lab`,
   detailed instructions can be found [here](https://jpvantassel.github.io/python3-course/#/intro/installing_jupyter).
 
@@ -65,5 +100,3 @@ Curating new training corpora is handled by the `mhvsr_vs30` package under
 `src/`, which builds validated recording-level manifests from published datasets
 and parses their raw files into a canonical three-component representation
 without modifying the raw data. See [docs/DATA_PIPELINE.md](docs/DATA_PIPELINE.md).
-
-The notebooks above do not depend on this package.

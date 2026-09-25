@@ -186,6 +186,27 @@ def test_label_is_not_inferred_from_file_names(workspace: Path, demo_config: Pat
     assert "demo_source:XX.BBB has no Vs30 label" in str(excinfo.value)
 
 
+def test_unlabelled_site_can_build_when_labels_are_explicitly_optional(
+    workspace: Path, demo_config: Path
+) -> None:
+    """QC/pretraining corpora may contain recordings before Vs30 curation."""
+    text = demo_config.read_text(encoding="utf-8")
+    head, _, tail = text.partition("  - site_code: XX.BBB")
+    unlabelled = head + "  - site_code: XX.BBB" + tail.split("    label:")[0]
+    demo_config.write_text(
+        unlabelled.replace("expectations:\n", "expectations:\n  require_labels: false\n"),
+        encoding="utf-8",
+    )
+
+    manifest = build_manifest(load_source_config(demo_config), workspace)
+
+    assert [label.site_id for label in manifest.labels] == ["demo_source:XX.AAA"]
+    assert {recording.site_id for recording in manifest.recordings} == {
+        "demo_source:XX.AAA",
+        "demo_source:XX.BBB",
+    }
+
+
 def test_unconfigured_site_is_reported_not_invented(workspace: Path, demo_config: Path) -> None:
     """Files belonging to no configured site stop the build instead of being absorbed."""
     text = demo_config.read_text(encoding="utf-8")

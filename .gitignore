@@ -34,6 +34,11 @@ datasets_global/**/raw/
 artifacts/curves/
 artifacts/datasets/
 artifacts/runs/
+outputs/
+
+# Local waveform fixtures and scratch work (large or machine-specific)
+data_test/
+tmp/
 
 # Checksum cache (rebuildable, machine-specific mtimes)
 artifacts/cache/
