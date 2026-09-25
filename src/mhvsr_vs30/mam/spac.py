@@ -14,16 +14,21 @@ from scipy.signal import find_peaks  # type: ignore[import-untyped]
 from scipy.special import j0  # type: ignore[import-untyped]
 
 
-def real_coherency(
+def complex_coherency(
     spectra: NDArray[np.complex128],
     pairs: Sequence[tuple[int, int]],
     bands: Sequence[tuple[int, int]],
-) -> NDArray[np.float64]:
-    """Return real, power-normalized cross spectra [band, pair]."""
+) -> NDArray[np.complex128]:
+    """Return power-normalized complex cross spectra [band, pair].
+
+    The real part is the SPAC coefficient.  Under an azimuthally balanced
+    wavefield the imaginary part tends to zero, so a persistent imaginary part
+    flags directional noise (Hayashi et al. 2022, Section 2).
+    """
     if spectra.ndim != 3 or spectra.shape[0] < 1:
         raise ValueError("spectra must have shape [window, station, frequency]")
     n_stations, n_frequency = spectra.shape[1:]
-    result = np.full((len(bands), len(pairs)), np.nan, dtype=np.float64)
+    result = np.full((len(bands), len(pairs)), np.nan + 0j, dtype=np.complex128)
     for band_index, (low, high) in enumerate(bands):
         if not (0 <= low < high <= n_frequency):
             raise ValueError("frequency band is outside the spectra")
@@ -35,8 +40,17 @@ def real_coherency(
             cross = np.mean(np.conj(x) * y)
             power = np.sqrt(np.mean(np.abs(x) ** 2) * np.mean(np.abs(y) ** 2))
             if power > 0:
-                result[band_index, pair_index] = float(np.real(cross / power))
+                result[band_index, pair_index] = complex(cross / power)
     return result
+
+
+def real_coherency(
+    spectra: NDArray[np.complex128],
+    pairs: Sequence[tuple[int, int]],
+    bands: Sequence[tuple[int, int]],
+) -> NDArray[np.float64]:
+    """Return real, power-normalized cross spectra [band, pair]."""
+    return np.asarray(np.real(complex_coherency(spectra, pairs, bands)), dtype=np.float64)
 
 
 def fit_bessel_grid(

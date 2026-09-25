@@ -8,7 +8,7 @@ import numpy as np
 from disba import DispersionError, Ellipticity  # type: ignore[import-untyped]
 from numpy.typing import NDArray
 
-from mhvsr_vs30.mam.inversion import forward_rayleigh_phase
+from mhvsr_vs30.mam.inversion import VpRule, forward_rayleigh_phase
 
 
 def forward_ellipticity(
@@ -18,6 +18,7 @@ def forward_ellipticity(
     *,
     poisson: float,
     density_g_cm3: float,
+    vp_rule: VpRule | None = None,
 ) -> NDArray[np.float64]:
     """Return absolute fundamental-mode Rayleigh H/V eigenfunction ratio."""
     periods = np.asarray(periods_s, dtype=np.float64)
@@ -27,10 +28,10 @@ def forward_ellipticity(
         raise ValueError("periods must be positive and strictly increasing")
     if len(thickness) != len(velocity) - 1 or np.any(thickness <= 0) or np.any(velocity <= 0):
         raise ValueError("layer dimensions and speeds are invalid")
-    vp_vs = np.sqrt(2 * (1 - poisson) / (1 - 2 * poisson))
+    rule = vp_rule or VpRule(method="constant_poisson", poisson=poisson)
     solver = Ellipticity(
         np.r_[thickness / 1000.0, 1.0],
-        velocity * vp_vs / 1000.0,
+        rule.vp(thickness, velocity) / 1000.0,
         velocity / 1000.0,
         np.full(len(velocity), density_g_cm3),
     )
@@ -66,6 +67,7 @@ def refine_candidate(
     candidate_count: int,
     perturbation_std: float,
     max_rmse_increase_m_s: float,
+    vp_rule: VpRule | None = None,
 ) -> tuple[NDArray[np.float64], list[dict[str, float | bool | int]]]:
     """Sample small perturbations while preserving the dispersion misfit bound."""
     base = np.asarray(initial, dtype=np.float64)
@@ -82,6 +84,7 @@ def refine_candidate(
             parameters[n_finite:],
             poisson=poisson,
             density_g_cm3=density_g_cm3,
+            vp_rule=vp_rule,
         )
         return float(np.sqrt(np.mean((predicted - dispersion_velocity_m_s) ** 2)))
 
@@ -92,6 +95,7 @@ def refine_candidate(
             parameters[n_finite:],
             poisson=poisson,
             density_g_cm3=density_g_cm3,
+            vp_rule=vp_rule,
         )
         return log_shape_correlation(hvsr_amplitude, theory)
 

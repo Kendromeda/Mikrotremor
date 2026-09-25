@@ -155,6 +155,7 @@ def test_changed_picks_require_fresh_upstream_qc(tmp_path: Path) -> None:
 
 
 def test_guided_initial_model_is_passed_to_each_optimizer_run(tmp_path: Path) -> None:
+    from mhvsr_vs30.mam.inversion import VpRule
     from mhvsr_vs30.mam.wavelength import initial_model_from_wavelength, wavelength_guides
 
     captured = []
@@ -180,6 +181,7 @@ def test_guided_initial_model_is_passed_to_each_optimizer_run(tmp_path: Path) ->
             "finite_layer_thickness_bounds_m": [[2.0, 8.0], [8.0, 20.0]],
             "layer_vs_bounds_m_s": [[150.0, 550.0], [200.0, 850.0], [250.0, 1200.0]],
             "poisson_ratio_assumed": 0.3,
+            "vp_rule": {"method": "groundwater", "groundwater_depth_m": 0.0},
             "density_assumed_g_cm3": 2.0,
             "initial_vs_phase_velocity_factor": 1.0,
             "preview_runs": 2,
@@ -199,6 +201,8 @@ def test_guided_initial_model_is_passed_to_each_optimizer_run(tmp_path: Path) ->
         "wavelength_guides": wavelength_guides,
         "differential_evolution": optimizer,
         "forward_rayleigh_phase": lambda period, thickness, velocity, **kw: np.full(8, velocity[0]),
+        "VpRule": VpRule,
+        "depth_summary": {"minimum_depth_m": 5.0, "maximum_depth_m": 15.0},
     }
     exec(cell(7), context)
     exec(cell(9), context)
@@ -208,6 +212,9 @@ def test_guided_initial_model_is_passed_to_each_optimizer_run(tmp_path: Path) ->
     assert (tmp_path / "wavelength_guides.csv").is_file()
     assert context["initial_method"] == "wavelength_endpoint_assumption"
     assert context["initial_df"].model.eq("wavelength_endpoint_assumption").all()
+    assert context["vp_rule"].method == "groundwater"
+    assert context["bounds_deeper_than_dmax"] is True
+    np.testing.assert_allclose(context["initial_df"].vp_m_s, 1.11 * 300.0 + 1290.0)
 
 
 def test_flat_hvsr_retains_candidate_without_claiming_improvement(tmp_path: Path) -> None:
@@ -224,6 +231,7 @@ def test_flat_hvsr_retains_candidate_without_claiming_improvement(tmp_path: Path
         "observed_h": np.ones(2),
         "poisson": 0.3,
         "density": 2.0,
+        "vp_rule": None,
         "OUT": tmp_path,
         "n_finite": 1,
         "baseline_corr": float("nan"),

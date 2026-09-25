@@ -33,3 +33,16 @@ def test_bessel_fit_rejects_invalid_geometry() -> None:
         fit_bessel_grid(
             np.array([10.0]), np.array([0.0]), np.array([[0.5]]), np.array([100.0, 200.0])
         )
+
+
+def test_complex_coherency_keeps_the_imaginary_part() -> None:
+    from mhvsr_vs30.mam.spac import complex_coherency
+
+    left = np.ones((3, 4), dtype=np.complex128)
+    right = left * np.exp(1j * np.pi / 3)
+    spectra = np.stack([left, right], axis=1)
+    result = complex_coherency(spectra, [(0, 1)], [(0, 4)])
+    np.testing.assert_allclose(result[0, 0], np.exp(1j * np.pi / 3))
+    np.testing.assert_allclose(
+        real_coherency(spectra, [(0, 1)], [(0, 4)])[0, 0], np.cos(np.pi / 3)
+    )
